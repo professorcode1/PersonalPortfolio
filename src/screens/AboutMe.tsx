@@ -2,45 +2,11 @@ import React from 'react';
 import { RoughNotation } from 'react-rough-notation';
 import {useAutoAnimate} from '@formkit/auto-animate/react'
 
-const NavBar:React.FC<{}> = () => {
+
+const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
+    const buttonFormatting = ' rounded-md w-96 h-8 text-sm flex items-center justify-center cursor-pointer '
     return (
-        <div className='w-full h-8 flex justify-center mt-4 text-slate-600 sticky top-0'>
-            <div className='w-3/5 flex justify-between MaratSansRegularFont text-lg'>
-                <div className='w-3/5'>
-                    <p>
-                        RAGHAV KUMAR
-                    </p>
-                </div>
-                <div className='flex w-2/5 pl-4'>
-                    <p className='mx-4'>About</p>
-                    <p className='mx-4'>Projects</p>
-                    <p className='mx-4'>Contacts</p>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const AboutMe:React.FC<{}> = () => {
-    const [startNotation, setStartNotation] = React.useState(false);
-    const [mainParent] = useAutoAnimate<HTMLDivElement>({
-        duration:300
-    });
-    const [mountChildren, setMountChildren] = React.useState(false);
-    React.useEffect(()=>{
-        setTimeout(()=>{
-            setStartNotation(true)
-
-        }, 750)
-
-        setTimeout(()=>{
-            setMountChildren(true);
-        }, 50);
-    }, [])
-    return (
-    <div className="h-screen flex  items-center justify-center overflow-x-hidden">
-        <div className='w-3/5 flex' ref={mainParent}>
-        {mountChildren && <div className='w-3/5 flex flex-col justify-center h-full pr-8'>
+        <div className='w-3/5 flex flex-col justify-center h-full pr-8'>
                 <p className='text-4xl MarartSansBoldFont'>
                     Hello! I am Raghav Kumar, a &nbsp;	
                     <RoughNotation type="highlight" color='#FFC5C5' show={startNotation}>
@@ -81,9 +47,40 @@ const AboutMe:React.FC<{}> = () => {
                         <a href='https://learn.microsoft.com/en-us/'> learn </a>
                     platform among many other things. 
                 </p>
-            </div>}
+                <div className='w-3/5 flex flex-row justify-center h-full pr-8 mt-4'>
+                    <a href='https://www.linkedin.com/in/raghavkumar02/' className={'bg-black text-white ' + buttonFormatting}>
+                        View LinkedIn
+                    </a>
+                    <a href='https://github.com/professorcode1' className={'ml-2 border-slate-500 border ' + buttonFormatting}>
+                        View Github
+                    </a>
+                </div>
+        </div>
+    )
+}
+
+const AboutMe:React.FC<{}> = () => {
+    const [startNotation, setStartNotation] = React.useState(false);
+    const [mainParent] = useAutoAnimate<HTMLDivElement>({
+        duration:300
+    });
+    const [mountChildren, setMountChildren] = React.useState(false);
+    React.useEffect(()=>{
+        setTimeout(()=>{
+            setStartNotation(true)
+
+        }, 750)
+
+        setTimeout(()=>{
+            setMountChildren(true);
+        }, 50);
+    }, [])
+    return (
+    <div className="h-screen flex  items-center justify-center overflow-x-hidden">
+        <div className='w-3/5 flex' ref={mainParent}>
+        {mountChildren && <MyDescription startNotation={startNotation} />}
             {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>
-                <img src='/Me with Cat Cropped.JPG' className='rounded-lg shadow-2xl w-64' style={{
+                <img src='/Me with Cat Cropped.JPG' className='rounded-lg shadow-2xl h-96' style={{
                     objectFit:"cover"
                 }} />
             </div>}
@@ -92,13 +89,5 @@ const AboutMe:React.FC<{}> = () => {
     )
 }
 
-function Landing() {
-  return (
-    <>
-    <NavBar />
-    <AboutMe />
-    </>
-  );
-}
 
-export {Landing};
+export {AboutMe};

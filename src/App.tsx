@@ -1,8 +1,16 @@
 import React from 'react';
-import { Landing } from './screens/Landings';
+import { AboutMe } from './screens/AboutMe';
+import { Projects } from './screens/Projects';
+import { NavBar } from './components/NavBar';
 
 function App() {
-  return <Landing />;
+  return (
+    <>
+    <NavBar />
+    <AboutMe />
+    <Projects />
+    </>
+  )
 }
 
 export default App;
