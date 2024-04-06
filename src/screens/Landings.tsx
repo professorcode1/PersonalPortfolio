@@ -1,8 +1,10 @@
 import React from 'react';
 import { RoughNotation } from 'react-rough-notation';
+import {useAutoAnimate} from '@formkit/auto-animate/react'
+
 const NavBar:React.FC<{}> = () => {
     return (
-        <div className='w-full h-8 flex justify-center mt-4 text-slate-600'>
+        <div className='w-full h-8 flex justify-center mt-4 text-slate-600 sticky top-0'>
             <div className='w-3/5 flex justify-between MaratSansRegularFont text-lg'>
                 <div className='w-3/5'>
                     <p>
@@ -21,16 +23,24 @@ const NavBar:React.FC<{}> = () => {
 
 const AboutMe:React.FC<{}> = () => {
     const [startNotation, setStartNotation] = React.useState(false);
+    const [mainParent] = useAutoAnimate<HTMLDivElement>({
+        duration:300
+    });
+    const [mountChildren, setMountChildren] = React.useState(false);
     React.useEffect(()=>{
         setTimeout(()=>{
             setStartNotation(true)
 
-        }, 100)
+        }, 750)
+
+        setTimeout(()=>{
+            setMountChildren(true);
+        }, 50);
     }, [])
     return (
-    <div className="w-screen flex mt-16 items-center justify-center">
-        <div className='w-3/5 flex'>
-            <div className='w-3/5 flex flex-col justify-center h-full pr-8'>
+    <div className="h-screen flex  items-center justify-center overflow-x-hidden">
+        <div className='w-3/5 flex' ref={mainParent}>
+        {mountChildren && <div className='w-3/5 flex flex-col justify-center h-full pr-8'>
                 <p className='text-4xl MarartSansBoldFont'>
                     Hello! I am Raghav Kumar, a &nbsp;	
                     <RoughNotation type="highlight" color='#FFC5C5' show={startNotation}>
@@ -42,12 +52,12 @@ const AboutMe:React.FC<{}> = () => {
                     I love working on challenging problems in the domain of
                 </p> 
                 <p className='text-sm '>
-                    <RoughNotation type='highlight' color='#FFEBD8' show={startNotation}>
+                    <RoughNotation type='highlight' color='#ffe376' show={startNotation}>
                         Computer Graphics,  GPU Programming and  Optimisation. 
                     </RoughNotation>
                 </p>
                 <p className='text-sm mt-2'>
-                    I got my Bachelors in CS while specializing in Edge AI and Robotics at
+                    I got my bachelors in Computer Science at
                 </p>
                 <p className='text-sm'>
                     <RoughNotation type='highlight' color='#C7DCA7' show={startNotation}>
@@ -71,12 +81,12 @@ const AboutMe:React.FC<{}> = () => {
                         <a href='https://learn.microsoft.com/en-us/'> learn </a>
                     platform among many other things. 
                 </p>
-            </div>
-            <div className='w-2/5 h-full p-4 pt-0  '>
+            </div>}
+            {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>
                 <img src='/Me with Cat Cropped.JPG' className='rounded-lg shadow-2xl w-64' style={{
                     objectFit:"cover"
                 }} />
-            </div>
+            </div>}
         </div>
     </div>
     )
