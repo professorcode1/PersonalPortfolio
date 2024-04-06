@@ -1,13 +1,26 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'RammettoOne';
+  src: url('./RammettoOne-Regular.ttf') format('truetype');
+  /* Add additional font formats if necessary */
+  /* Specify the correct path to the font files */
+}
+@font-face {
+  font-family: 'Marart Sans Regular';
+  src: url('./marat-sans/Marat Sans Regular.otf') format("opentype");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Marart Sans Bold';
+  src: url('./marat-sans/Marat Sans Bold.otf') format("opentype");
+}
+.RammettoOneFont {
+  font-family: 'RammettoOne', sans-serif;
+}
+
+.MaratSansRegularFont {
+  font-family: 'Marart Sans Regular', sans-serif;
+}
+
+.MarartSansBoldFont{
+  font-family: 'Marart Sans Bold', sans-serif;
 }
