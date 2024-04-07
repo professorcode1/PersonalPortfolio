@@ -1,15 +1,16 @@
 import React from 'react';
 import { AboutMe } from './screens/AboutMe';
-import { Projects } from './screens/Projects';
+import { Projects, TProject } from './screens/Projects';
 import { NavBar } from './components/NavBar';
 
 function App() {
+  const [projectSelected, setProjectSelected] = React.useState<TProject|null>(null);
   return (
-    <>
-    <NavBar />
-    <AboutMe />
-    <Projects />
-    </>
+    <div className={(projectSelected ? 'overflow-y-cutoff' : 'overflow-y-scroll') + " h-screen "}>
+      <NavBar  projectSelected={projectSelected} />
+      <AboutMe />
+      <Projects setSelectedProject={setProjectSelected} selectedProject={projectSelected} />
+    </div>
   )
 }
 

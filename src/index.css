@@ -262,3 +262,45 @@
 #living-shapes-wrapper[data-roundness="4"] > .shape:nth-child(7) {  
   border-top-left-radius: 10rem;
 }
+
+#living-shapes-wrapper > div > p{
+  display: none;
+}
+
+#living-shapes-wrapper[data-roundness="0"] > div > p{
+  display:block;
+  padding: 12px;
+  padding-left: 4px;
+}
+#living-shapes-wrapper[data-roundness="0"] > .shape {
+  height: calc(100% / 7);
+  width: 100%;
+  position: relative;
+  transition: left, top, height, width, border-radius;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+#living-shapes-wrapper[data-roundness="0"] > .shape[data-selected="true"] {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  border-radius: 0px;
+  cursor: default;
+}
+#living-shapes-wrapper > .shape > div{
+  display: none;
+}
+#living-shapes-wrapper[data-project-selected="true"] > .shape[data-selected="false"] {
+  display: none;
+}
+
+#living-shapes-wrapper[data-project-selected="true"] > .shape[data-selected="true"] > p{
+  display: none;
+}
+#living-shapes-wrapper[data-project-selected="true"] > .shape[data-selected="true"] > div {
+  display: block;
+  cursor: default;
+}

@@ -1,8 +1,13 @@
 import React from 'react';
-import { AboutMe } from '../screens/AboutMe';
-import { Projects } from '../screens/Projects';
 
-const NavBar:React.FC<{}> = () => {
+const NavBar:React.FC<{
+    projectSelected:string|null
+}> = ({
+    projectSelected
+}) => {
+    if(projectSelected){
+        return <></>
+    }
     return (
         <div className='w-full h-8 flex justify-center mt-4 text-slate-600 sticky top-0 bg-white z-50'>
             <div className='w-3/5 flex justify-between MaratSansRegularFont text-lg'>

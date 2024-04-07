@@ -39,13 +39,14 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
                     <RoughNotation type='highlight' color='#FFC5C5' show={startNotation}>
                         automates Power BI workloads
                     </RoughNotation>
-                    &nbsp; as well as work on data engineering solutions for &nbsp;                    
+                    &nbsp; as well as work on data engineering solutions to improve the  &nbsp;                    
                     <RoughNotation type='underline' show={startNotation}>
-                    Microsoft 
+                        <a href='https://learn.microsoft.com/en-us/'>
+                            Microsoft learn platform 
+                        </a>
                     </RoughNotation>
-                    &nbsp;to improve their 
-                        <a href='https://learn.microsoft.com/en-us/'> learn </a>
-                    platform among many other things. 
+                    &nbsp;
+                     among many other things. 
                 </p>
                 <div className='w-3/5 flex flex-row justify-center h-full pr-8 mt-4'>
                     <a href='https://www.linkedin.com/in/raghavkumar02/' className={'bg-black text-white ' + buttonFormatting}>
