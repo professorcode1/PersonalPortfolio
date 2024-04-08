@@ -301,6 +301,16 @@
   display: none;
 }
 #living-shapes-wrapper[data-project-selected="true"] > .shape[data-selected="true"] > div {
-  display: block;
+  display: flex;
   cursor: default;
+}
+#living-shapes-wrapper[data-project-selected="false"] > .close-project{
+  display: none;
+}
+#living-shapes-wrapper[data-project-selected="true"] > .close-project{
+  display: block;
+  position: fixed;
+  top: 10px;
+  z-index: 100;
+  left: 10px;
 }

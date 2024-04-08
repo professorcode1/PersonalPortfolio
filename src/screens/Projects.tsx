@@ -55,12 +55,23 @@ const Projects:React.FC<{
 }) =>{
     const [configurationIndex, setConfigurationIndex] = React.useState(0)
     const [pauseEffect, setPauseEffect] = React.useState(false);
+    const HandleEscPress = (event:KeyboardEvent) => {
+        if (event.key === "Escape") {
+            setSelectedProject(null);    
+        }
+      
+    }
     React.useEffect(()=>{
         const configChangeTimeout = setInterval(()=>{
             if(pauseEffect) return ;
             setConfigurationIndex(uniqueRand(0, combinations.length-1, configurationIndex));
         }, 3000)
-        return () => clearTimeout(configChangeTimeout)
+        document.addEventListener("keydown", HandleEscPress, false);
+        return () => {
+            clearTimeout(configChangeTimeout);
+            document.removeEventListener("keydown", HandleEscPress,false);
+        }
+
     }, [])
     const PauseEffectEvent = () => setPauseEffect(true);
     const ResumeEffectEvent = () => {
@@ -85,6 +96,7 @@ const Projects:React.FC<{
                 onMouseLeave={ResumeEffectEvent} 
             >
 
+
                 {ProjectNames.map(project_name => 
                     <div className="shape cursor-pointer" data-selected={selectedProject === project_name} >
                         <p onClick={()=>{
@@ -95,6 +107,15 @@ const Projects:React.FC<{
                         {ProjectContent && <ProjectContent />}
                     </div>
                     )}
+            <button 
+                    className="close-project text-base bg-white p-2 rounded-lg w-16" 
+                    onClick={()=>{
+                        setSelectedProject(null)
+                    }}
+                >
+                    Esc
+            </button>
+
             </div>
         </div>
     )

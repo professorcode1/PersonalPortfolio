@@ -8,7 +8,7 @@ function App() {
   return (
     <div className={(projectSelected ? 'overflow-y-cutoff' : 'overflow-y-scroll') + " h-screen "}>
       <NavBar  projectSelected={projectSelected} />
-      <AboutMe />
+      <AboutMe projectSelected={Boolean(projectSelected)} />
       <Projects setSelectedProject={setProjectSelected} selectedProject={projectSelected} />
     </div>
   )

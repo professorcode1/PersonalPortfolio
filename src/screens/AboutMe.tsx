@@ -33,7 +33,7 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
                     After that I started working at MAQ Software as Software Developer and a Data Engineer. 
                 </p>
                 <p className='text-sm mt-2'>
-                    At MAQ I am responsible for work on the internal tool that  
+                    At MAQ I am responsible for working on the internal tool that  
                 </p>
                 <p className='text-sm'>
                     <RoughNotation type='highlight' color='#FFC5C5' show={startNotation}>
@@ -60,7 +60,9 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
     )
 }
 
-const AboutMe:React.FC<{}> = () => {
+const AboutMe:React.FC<{
+    projectSelected:boolean
+}> = ({projectSelected}) => {
     const [startNotation, setStartNotation] = React.useState(false);
     const [mainParent] = useAutoAnimate<HTMLDivElement>({
         duration:300
@@ -76,8 +78,9 @@ const AboutMe:React.FC<{}> = () => {
             setMountChildren(true);
         }, 50);
     }, [])
+    if(projectSelected) return null;
     return (
-    <div className="h-screen flex  items-center justify-center overflow-x-hidden">
+    <div className="h-screen flex  items-center justify-center overflow-x-hidden ">
         <div className='w-3/5 flex' ref={mainParent}>
         {mountChildren && <MyDescription startNotation={startNotation} />}
             {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>
