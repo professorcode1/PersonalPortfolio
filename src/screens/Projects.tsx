@@ -76,7 +76,7 @@ const Projects:React.FC<{
     const PauseEffectEvent = () => setPauseEffect(true);
     const ResumeEffectEvent = () => {
         if(selectedProject) return ;
-        setPauseEffect(false)
+        setPauseEffect(false);
     };
     const ProjectContent =  ProjectComponent.get(selectedProject!) ?? null
     return (
@@ -101,7 +101,7 @@ const Projects:React.FC<{
                     <div className="shape cursor-pointer" data-selected={selectedProject === project_name} >
                         <p onClick={()=>{
                             setSelectedProject(project_name);
-                        }}>
+                        }} className=''>
                             {project_name}
                         </p>
                         {ProjectContent && <ProjectContent />}

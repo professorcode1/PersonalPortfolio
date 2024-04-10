@@ -1,6 +1,9 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
 
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+
 const CollegeScheduler:React.FC<{
 
 }> = () => {
@@ -9,25 +12,45 @@ const CollegeScheduler:React.FC<{
             <div className='w-3/5 h-4/5 bg-white relative  items-center overflow-y-scroll'>
                 <p className='mt-2 ml-2 text-3xl font-bold pl-6	'>College Scheduler</p>
 
-                <div className='w-full flex flex-col items-center mt-4 p-2 '>
-                    <a 
-                        className="w-4/5"
-                        href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
-                    >
+                  <div className='w-full flex flex-col items-center mt-4 p-2 '>
+                    <Splide className='border border-black w-full' > 
+                      <SplideSlide>
                         <img 
+                          src='./College Scheduler Landing Page.png'
+                          className='w-full'
+                        />
+                      </SplideSlide>
+                      <SplideSlide>
+                        <img 
+                          src='./College Scheduler Home page.png'
+                          className='w-full'
+                        />
+                      </SplideSlide>
+                      <SplideSlide>
+                        <img 
+                          src='./College Scheduler Course Page.png'
+                          className='w-full'
+                        />
+                        </SplideSlide>
+                        <SplideSlide>
+                          <img 
                             src='./College Scheduler Scheduling page.png'
                             className='w-full'
-                        />
-                    </a>
+                          />
+                        </SplideSlide>
+                    </Splide>
+
                     <TypeIt options={{speed:0.01}}>
                     <ol className='text-base m-4 list-decimal'>
                         <li className='m-4'>
-                            Developed a complete web application that allows for entering a university 
-                            scheduling requirements to create, view and share schedules.
+                          Created a web application for my university as my Software Engineering 
+                          course project that allows a university to input their scheduling constraints 
+                          and get a schedule as a result.
                         </li>
                         <li className='m-4'>
-                            Implemented and optimized the ant-colony metaheuristic which runs in under 
-                            5 seconds and Genetic Algorithm which runs in under 1 minute for scheduling.
+                          The problem of scheduling translates to the NP hard problem of graph coloring 
+                          which I solved by implementing 2 meta heuristic algorithms: 
+                          <b>Ant Colony Optimization and Genetic Algorithm.</b>
                         </li>
                     </ol>
                     </TypeIt>

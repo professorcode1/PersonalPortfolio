@@ -56,12 +56,12 @@
 }
 
 #living-shapes-wrapper > .shape:nth-child(4) {
-  background-color: rgb(241, 91, 181);
+  background-color: #FFC5C5;
   z-index: 2;
 }
 
 #living-shapes-wrapper > .shape:nth-child(5) {
-  background-color: rgb(254, 228, 64);
+  background-color: #ffe376;
   z-index: 2;
 }
 
@@ -71,7 +71,7 @@
 }
 
 #living-shapes-wrapper > .shape:nth-child(7) {
-  background-color: rgb(0, 245, 212);
+  background-color: #C7DCA7;
   z-index: 2;
 }
 
@@ -271,6 +271,9 @@
   display:block;
   padding: 12px;
   padding-left: 4px;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  font-weight: 600;
 }
 #living-shapes-wrapper[data-roundness="0"] > .shape {
   height: calc(100% / 7);

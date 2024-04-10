@@ -615,10 +615,6 @@ html{
   height: 24rem;
 }
 
-.h-\[70\%\] {
-  height: 70%;
-}
-
 .h-full {
   height: 100%;
 }
@@ -691,10 +687,6 @@ html{
   overflow: hidden;
 }
 
-.overflow-scroll {
-  overflow: scroll;
-}
-
 .overflow-x-hidden {
   overflow-x: hidden;
 }
@@ -718,11 +710,6 @@ html{
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-
-.border-slate-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
 .border-slate-500 {
