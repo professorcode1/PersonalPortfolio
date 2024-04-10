@@ -5,18 +5,18 @@ import { CollegeScheduler } from '../components/College Scheduler';
 import { MLSCHuntPortal } from '../components/MLSC Cryptic Hunt Portal';
 import { IntelHackathon } from '../components/Intel Hackathon';
 import { BlueYonderHackathon } from '../components/Blue Yonder Hackathon';
-import { SpenseHackathon } from '../components/Spense Hackathon';
+import { PowerBot } from '../components/PowerBot';
 
 const rand = (min:number, max:number) => Math.floor(Math.random() * (max - min + 1) + min);
 
 const ProjectNames = [
+    "PowerBot: MAQ",
     "Event Analysis",
     "Flight Simulator",
     "College Scheduler",
     "MLSC Cryptic Hunt Portal",
     "Intel OneAPI Code Maven Hackathon",
     "Blue Yonder Demand and Supply Problem",
-    "Spense Hackathon"
 ] as const 
 
 type TProject = typeof ProjectNames[number]
@@ -28,7 +28,7 @@ const ProjectComponent:Map<TProject, React.FC> = new Map([
     ["MLSC Cryptic Hunt Portal", MLSCHuntPortal],
     ["Intel OneAPI Code Maven Hackathon", IntelHackathon],
     ["Blue Yonder Demand and Supply Problem", BlueYonderHackathon],
-    ["Spense Hackathon", SpenseHackathon]
+    ["PowerBot: MAQ", PowerBot]
 ])
 
 const uniqueRand = (min:number, max:number, prev:number) => {

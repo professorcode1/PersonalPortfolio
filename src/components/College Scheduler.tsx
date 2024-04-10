@@ -59,7 +59,7 @@ const CollegeScheduler:React.FC<{
                 <div className="w-full flex justify-center text-base ">
                     <a 
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
-                        href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
+                        href="https://github.com/professorcode1/College-Time-Table-Scheduler"
                     >
                         Github
                     </a>

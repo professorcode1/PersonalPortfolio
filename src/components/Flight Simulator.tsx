@@ -21,11 +21,13 @@ const FlightSimulator:React.FC<{
                     <TypeIt options={{speed:0.01}}>
                     <ol className='text-base m-4 list-decimal'>
                         <li className='m-4'>
-                            Developed a prototype game using nothing but OpenGL in which the player pilots a plane over mountainous terrain.
+                        Created Flight Simulator in C++ using OpenGL where the player pilots over procedurally generated terrain. 
                         </li>
                         <li className='m-4'>
-                        Infinite terrain is procedurally generated using Compute Shaders that execute in 2-10 ms
-with each render of the scene taking 13-20 ms.
+                            Implemented Perlin noise using compute shaders to create the terrain as well as implemented LOD and infinite scrolling. 
+                            </li>
+                        <li className='m-4'>
+                            The cloud meshes are displaced using flow fields and it uses a trivial lighting model of ambient light hitting all meshes.                         
                         </li>
                     </ol>
                     </TypeIt>
