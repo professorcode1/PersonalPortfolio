@@ -267,6 +267,7 @@
   display: none;
 }
 
+
 #living-shapes-wrapper[data-roundness="0"] > div > p{
   display:block;
   padding: 12px;
@@ -275,14 +276,21 @@
   line-height: 1.5rem; /* 24px */
   font-weight: 600;
 }
+#living-shapes-wrapper[data-roundness="0"] {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-rows: auto auto; /* 2 rows, with the second row's height determined by content */
+  gap: 10px; /* spacing between grid items */
+}
 #living-shapes-wrapper[data-roundness="0"] > .shape {
-  height: calc(100% / 7);
+  height: 100%;
   width: 100%;
   position: relative;
   transition: left, top, height, width, border-radius;
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
 }
+
 
 #living-shapes-wrapper[data-roundness="0"] > .shape[data-selected="true"] {
   position: fixed;
