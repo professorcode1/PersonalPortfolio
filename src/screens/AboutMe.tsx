@@ -6,7 +6,7 @@ import {useAutoAnimate} from '@formkit/auto-animate/react'
 const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
     const buttonFormatting = ' rounded-md w-96 h-8 text-sm flex items-center justify-center cursor-pointer '
     return (
-        <div className='w-3/5 flex flex-col justify-center h-full pr-8'>
+        <div className='w-3/5 flex flex-col justify-center h-full pr-8' >
                 <p className='text-4xl MarartSansBoldFont'>
                     Hello! I am Raghav Kumar, a &nbsp;	
                     <RoughNotation type="highlight" color='#FFC5C5' show={startNotation}>
@@ -80,7 +80,7 @@ const AboutMe:React.FC<{
     }, [])
     if(projectSelected) return null;
     return (
-    <div className="h-screen flex  items-center justify-center overflow-x-hidden ">
+    <div className="h-screen flex  items-center justify-center overflow-x-hidden " id="AboutMeScreen">
         <div className='w-3/5 flex' ref={mainParent}>
         {mountChildren && <MyDescription startNotation={startNotation} />}
             {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>

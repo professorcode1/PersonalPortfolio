@@ -104,7 +104,7 @@ const Projects:React.FC<{
     };
     const ProjectContent =  ProjectComponent.get(selectedProject!) ?? null
     return (
-        <div className='h-screen flex flex-col  justify-evenly items-center '>
+        <div id="ProjectsScreen" className='h-screen flex flex-col  justify-evenly items-center '>
             <div className='w-3/5 flex pt-8 pb-8'>
                 <h1 className='text-5xl MarartSansBoldFont'>
                     Projects

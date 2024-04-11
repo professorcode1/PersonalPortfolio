@@ -2,6 +2,7 @@ import React from 'react';
 import { AboutMe } from './screens/AboutMe';
 import { Projects, TProject } from './screens/Projects';
 import { NavBar } from './components/NavBar';
+import { ContactMe } from './screens/ContactMe';
 
 function App() {
   const [projectSelected, setProjectSelected] = React.useState<TProject|null>(null);
@@ -10,6 +11,7 @@ function App() {
       <NavBar  projectSelected={projectSelected} />
       <AboutMe projectSelected={Boolean(projectSelected)} />
       <Projects setSelectedProject={setProjectSelected} selectedProject={projectSelected} />
+      <ContactMe />
     </div>
   )
 }

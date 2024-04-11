@@ -17,9 +17,36 @@ const NavBar:React.FC<{
                     </p>
                 </div>
                 <div className='flex w-2/5 pl-4'>
-                    <p className='mx-4'>About</p>
-                    <p className='mx-4'>Projects</p>
-                    <p className='mx-4'>Contacts</p>
+                    <button className='mx-4'
+                        onClick={()=>{
+                            const element = document.getElementById("AboutMeScreen");
+                            element?.scrollIntoView({
+                                behavior:"smooth"
+                            });
+                        }}
+                    >
+                        About
+                    </button>
+                    <button className='mx-4'
+                        onClick={()=>{
+                            const element = document.getElementById("ProjectsScreen");
+                            element?.scrollIntoView({
+                                behavior:"smooth"
+                            });
+                        }}
+                    >
+                        Projects
+                    </button>
+                    <button className='mx-4'
+                        onClick={()=>{
+                            const element = document.getElementById("ContactMeScreen");
+                            element?.scrollIntoView({
+                                behavior:"smooth"
+                            });
+                        }}
+                    >
+                        Contacts
+                    </button>
                 </div>
             </div>
         </div>
