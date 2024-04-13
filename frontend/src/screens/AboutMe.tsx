@@ -2,6 +2,7 @@ import React from 'react';
 import { RoughNotation } from 'react-rough-notation';
 import {useAutoAnimate} from '@formkit/auto-animate/react'
 import MyImage from "../assets/Me with Cat Cropped.jpg"
+import { WebTelemetryAnchor } from '../components/WebTelAnchor';
 
 const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
     const buttonFormatting = ' rounded-md w-96 h-8 text-sm flex items-center justify-center cursor-pointer '
@@ -41,20 +42,20 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
                     </RoughNotation>
                     &nbsp; as well as work on data engineering solutions to improve the  &nbsp;                    
                     <RoughNotation type='underline' show={startNotation}>
-                        <a href='https://learn.microsoft.com/en-us/'>
+                        <WebTelemetryAnchor href='https://learn.microsoft.com/en-us/'>
                             Microsoft learn platform 
-                        </a>
+                        </WebTelemetryAnchor>
                     </RoughNotation>
                     &nbsp;
                      among many other things. 
                 </p>
                 <div className='w-3/5 flex flex-row justify-center h-full pr-8 mt-4'>
-                    <a href='https://www.linkedin.com/in/raghavkumar02/' className={'bg-black text-white ' + buttonFormatting}>
+                    <WebTelemetryAnchor href='https://www.linkedin.com/in/raghavkumar02/' className={'bg-black text-white ' + buttonFormatting}>
                         View LinkedIn
-                    </a>
-                    <a href='https://github.com/professorcode1' className={'ml-2 border-slate-500 border ' + buttonFormatting}>
+                    </WebTelemetryAnchor>
+                    <WebTelemetryAnchor href='https://github.com/professorcode1' className={'ml-2 border-slate-500 border ' + buttonFormatting}>
                         View Github
-                    </a>
+                    </WebTelemetryAnchor>
                 </div>
         </div>
     )

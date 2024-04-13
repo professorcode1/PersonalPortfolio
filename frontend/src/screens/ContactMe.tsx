@@ -9,6 +9,7 @@ import { PowerBot } from '../components/PowerBot';
 import GmailLogo from "../assets/gmail.png"
 import LinkedinLogo from "../assets/LinkedIn_icon.png"
 import InstagramLogo from "../assets/instagram logo.png"
+import { WebTelemetryAnchor } from '../components/WebTelAnchor';
 const ContactMe:React.FC<{
 }> = ({
 }) =>{
@@ -27,15 +28,15 @@ const ContactMe:React.FC<{
                         Here's all the ways we can get in touch!
                     </p>
                     <div className='flex justify-around w-full items-center'>
-                        <a href='mailto:raghkum2000@gmail.com'>
+                        <WebTelemetryAnchor href='mailto:raghkum2000@gmail.com'>
                             <img src={GmailLogo} className='h-16 w-16' />
-                        </a>
-                        <a href='https://www.linkedin.com/in/raghavkumar02/'>
+                        </WebTelemetryAnchor>
+                        <WebTelemetryAnchor href='https://www.linkedin.com/in/raghavkumar02/'>
                             <img src={LinkedinLogo} className='h-12 w-12' />
-                        </a>
-                        <a href='https://www.instagram.com/blackcatsnchords/'>
+                        </WebTelemetryAnchor>
+                        <WebTelemetryAnchor href='https://www.instagram.com/blackcatsnchords/'>
                             <img src={InstagramLogo} className='h-16 w-16'/>
-                        </a>
+                        </WebTelemetryAnchor>
                     </div>
                 </div>
             </div>

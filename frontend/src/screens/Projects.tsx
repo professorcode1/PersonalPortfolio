@@ -6,6 +6,7 @@ import { MLSCHuntPortal } from '../components/MLSC Cryptic Hunt Portal';
 import { IntelHackathon } from '../components/Intel Hackathon';
 import { BlueYonderHackathon } from '../components/Blue Yonder Hackathon';
 import { PowerBot } from '../components/PowerBot';
+import { WebTelemetryMountingEventHOC } from '../utils/WebTelemetryComponentWrapper';
 
 const rand = (min:number, max:number) => Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -22,14 +23,28 @@ const ProjectNames = [
 type TProject = typeof ProjectNames[number]
 
 const ProjectComponent:Map<TProject, React.FC> = new Map([
-    ["Event Analysis", EventAnalysis],
-    ["Flight Simulator", FlightSimulator],
-    ["College Scheduler", CollegeScheduler],
-    ["MLSC Cryptic Hunt Portal", MLSCHuntPortal],
-    ["Intel OneAPI Code Maven Hackathon", IntelHackathon],
-    ["Blue Yonder Demand and Supply Hackathon", BlueYonderHackathon],
-    ["PowerBot: MAQ", PowerBot]
-])
+    [
+        "Event Analysis", 
+        WebTelemetryMountingEventHOC(EventAnalysis, "Event Analysis")],
+    [
+        "Flight Simulator", 
+        WebTelemetryMountingEventHOC(FlightSimulator, "Flight Simulator")],
+    [
+        "College Scheduler", 
+        WebTelemetryMountingEventHOC(CollegeScheduler, "College Scheduler")],
+    [
+        "MLSC Cryptic Hunt Portal", 
+        WebTelemetryMountingEventHOC(MLSCHuntPortal, "MLSC Cryptic Hunt Portal")],
+    [
+        "Intel OneAPI Code Maven Hackathon", 
+        WebTelemetryMountingEventHOC(IntelHackathon, "Intel OneAPI Code Maven Hackathon")],
+    [
+        "Blue Yonder Demand and Supply Hackathon", 
+        WebTelemetryMountingEventHOC(BlueYonderHackathon, "Blue Yonder Demand and Supply Hackathon")],
+    [
+        "PowerBot: MAQ", 
+        WebTelemetryMountingEventHOC(PowerBot, "PowerBot: MAQ")]]
+)
 const ProjectDescription:Map<TProject, string> = new Map([
     [
         "PowerBot: MAQ", 
@@ -125,13 +140,14 @@ const Projects:React.FC<{
             >
 
 
-                {ProjectNames.map(project_name => 
+                {ProjectNames.map(project_name =>   
                     <div 
                         className="shape cursor-pointer" 
                         data-selected={selectedProject === project_name}
                         onClick={()=>{
                             setSelectedProject(project_name);
                         }} 
+                        key={project_name}
                     >
                         <p className=''>
                             <p>
@@ -141,7 +157,8 @@ const Projects:React.FC<{
                                 {ProjectDescription.get(project_name)!}
                             </p>
                         </p>
-                        {ProjectContent && <ProjectContent />}
+                        
+                        {selectedProject === project_name && ProjectContent && <ProjectContent key={project_name} />}
                     </div>
                     )}
             <button 
