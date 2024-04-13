@@ -1,9 +1,12 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
-
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
+import MLSC_Landing_Page from '../assets/MLSC Landing Page.png'
+import MLSC_Register_Page from '../assets/MLSC Register Page.png'
+import MLSC_Question_Page from '../assets/MLSC Question Page.png'
+import MLSC_Leaderboard_Page from '../assets/MLSC Leaderboard Page.png'
 const MLSCHuntPortal:React.FC<{
 
 }> = () => {
@@ -16,25 +19,25 @@ const MLSCHuntPortal:React.FC<{
                     <Splide className='border border-black w-full' > 
                       <SplideSlide>
                         <img 
-                          src='./MLSC Landing Page.png'
+                          src={MLSC_Landing_Page}
                           className='w-full'
                         />
                       </SplideSlide>
                       <SplideSlide>
                         <img 
-                          src='./MLSC Register Page.png'
+                          src={MLSC_Register_Page}
                           className='w-full'
                         />
                       </SplideSlide>
                       <SplideSlide>
                         <img 
-                          src='./MLSC Question Page.png'
+                          src={MLSC_Question_Page}
                           className='w-full'
                         />
                         </SplideSlide>
                         <SplideSlide>
                           <img 
-                            src='./MLSC Leaderboard Page.png'
+                            src={MLSC_Leaderboard_Page}
                             className='w-full'
                           />
                         </SplideSlide>

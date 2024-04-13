@@ -1,8 +1,11 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
-
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import Landing_Page from '../assets/College Scheduler Landing Page.png'
+import Home_page from '../assets/College Scheduler Home page.png'
+import Course_Page from '../assets/College Scheduler Course Page.png'
+import Scheduling_page from '../assets/College Scheduler Scheduling page.png'
 
 const CollegeScheduler:React.FC<{
 
@@ -16,25 +19,25 @@ const CollegeScheduler:React.FC<{
                     <Splide className='border border-black w-full' > 
                       <SplideSlide>
                         <img 
-                          src='./College Scheduler Landing Page.png'
+                          src={Landing_Page}
                           className='w-full'
                         />
                       </SplideSlide>
                       <SplideSlide>
                         <img 
-                          src='./College Scheduler Home page.png'
+                          src={Home_page}
                           className='w-full'
                         />
                       </SplideSlide>
                       <SplideSlide>
                         <img 
-                          src='./College Scheduler Course Page.png'
+                          src={Course_Page}
                           className='w-full'
                         />
                         </SplideSlide>
                         <SplideSlide>
                           <img 
-                            src='./College Scheduler Scheduling page.png'
+                            src={Scheduling_page}
                             className='w-full'
                           />
                         </SplideSlide>

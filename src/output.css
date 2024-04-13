@@ -631,6 +631,10 @@ html{
   height: 4rem;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .w-16 {
   width: 4rem;
 }
@@ -661,6 +665,10 @@ html{
 
 .w-32 {
   width: 8rem;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .cursor-pointer {

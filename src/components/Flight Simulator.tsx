@@ -1,5 +1,6 @@
 import React from 'react';
 import TypeIt from "typeit-react";
+import FlightSimulatorGif from "../assets/Flight Simulator.gif"
 const FlightSimulator:React.FC<{
 
 }> = () => {
@@ -14,7 +15,7 @@ const FlightSimulator:React.FC<{
                         href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
                     >
                         <img 
-                            src='./Flight Simulator.gif'
+                            src={FlightSimulatorGif}
                             className='w-full'
                         />
                     </a>

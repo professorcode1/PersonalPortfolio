@@ -1,5 +1,6 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
+import IntelHackPlot from "../assets/Intel Hack Plot.png"
 
 const IntelHackathon:React.FC<{
 
@@ -17,7 +18,7 @@ const IntelHackathon:React.FC<{
                         href="https://github.com/professorcode1/IntelHack/tree/main"
                     >
                         <img 
-                            src='./Intel Hack Plot.png'
+                            src={IntelHackPlot}
                             className='w-full'
                         />
                     </a>

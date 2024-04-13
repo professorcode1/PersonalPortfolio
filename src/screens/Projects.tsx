@@ -81,6 +81,10 @@ const Projects:React.FC<{
     const HandleEscPress = (event:KeyboardEvent) => {
         if (event.key === "Escape") {
             setSelectedProject(null);    
+            setTimeout(()=>{
+                const element = document.getElementById("ProjectsScreen");
+                element?.scrollIntoView();
+            }, 10)
         }
       
     }
@@ -99,7 +103,6 @@ const Projects:React.FC<{
     const PauseEffectEvent = () => setPauseEffect(true);
     const ResumeEffectEvent = () => {
         if(selectedProject) return ;
-        return ;
         setPauseEffect(false);
     };
     const ProjectContent =  ProjectComponent.get(selectedProject!) ?? null

@@ -1,7 +1,7 @@
 import React from 'react';
 import { RoughNotation } from 'react-rough-notation';
 import {useAutoAnimate} from '@formkit/auto-animate/react'
-
+import MyImage from "../assets/Me with Cat Cropped.jpg"
 
 const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
     const buttonFormatting = ' rounded-md w-96 h-8 text-sm flex items-center justify-center cursor-pointer '
@@ -84,7 +84,7 @@ const AboutMe:React.FC<{
         <div className='w-3/5 flex' ref={mainParent}>
         {mountChildren && <MyDescription startNotation={startNotation} />}
             {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>
-                <img src='/Me with Cat Cropped.JPG' className='rounded-lg shadow-2xl h-96' style={{
+                <img src={MyImage} className='rounded-lg shadow-2xl h-96' style={{
                     objectFit:"cover"
                 }} />
             </div>}
