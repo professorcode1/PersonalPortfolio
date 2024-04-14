@@ -1,6 +1,7 @@
 import React from 'react';
 import TypeIt from "typeit-react";
 import FlightSimulatorGif from "../assets/Flight Simulator.gif"
+import { WebTelemetryAnchor } from './WebTelAnchor';
 const FlightSimulator:React.FC<{
 
 }> = () => {
@@ -10,7 +11,7 @@ const FlightSimulator:React.FC<{
                 <p className='mt-2 ml-2 text-3xl font-bold pl-6	'>Flight Simulator</p>
 
                 <div className='w-full flex flex-col items-center mt-4 p-2 '>
-                    <a 
+                    <WebTelemetryAnchor 
                         className="w-4/5"
                         href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
                     >
@@ -18,7 +19,7 @@ const FlightSimulator:React.FC<{
                             src={FlightSimulatorGif}
                             className='w-full'
                         />
-                    </a>
+                    </WebTelemetryAnchor>
                     <TypeIt options={{speed:0.01}}>
                     <ol className='text-base m-4 list-decimal'>
                         <li className='m-4'>
@@ -36,12 +37,12 @@ const FlightSimulator:React.FC<{
                 </div>
 
                 <div className="w-full flex justify-center text-base ">
-                    <a 
+                    <WebTelemetryAnchor
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
                     >
                         Github
-                    </a>
+                    </WebTelemetryAnchor>
 
                 </div>
             </div>

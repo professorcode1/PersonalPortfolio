@@ -4,7 +4,7 @@ import { WebTelemetryEvent } from "./WebTelemetryTypes";
 
 async function ReportWebTelemetryEvent(event:WebTelemetryEvent){
     try {
-        axios.post("http://localhost:8000/webTelemetry",event)
+        axios.post("webTelemetry",event)
     } catch (error) {
         console.error(error)
     }

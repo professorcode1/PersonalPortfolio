@@ -27,7 +27,7 @@ const WebTelemetryAnchor:React.FC<{
             })()
         }
         try {
-            // window!.open(href, '_blank')!.focus();
+            window!.open(href, '_blank')!.focus();
         } catch (error) {
             console.error(error)
             alert("sorry, something has gone wrong!")

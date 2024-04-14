@@ -1,6 +1,7 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
 import IntelHackPlot from "../assets/Intel Hack Plot.png"
+import { WebTelemetryAnchor } from './WebTelAnchor';
 
 const IntelHackathon:React.FC<{
 
@@ -13,7 +14,7 @@ const IntelHackathon:React.FC<{
                 </p>
 
                 <div className='w-full flex flex-col items-center mt-4 p-2 '>
-                    <a 
+                    <WebTelemetryAnchor 
                         className="w-4/5"
                         href="https://github.com/professorcode1/IntelHack/tree/main"
                     >
@@ -21,7 +22,7 @@ const IntelHackathon:React.FC<{
                             src={IntelHackPlot}
                             className='w-full'
                         />
-                    </a>
+                    </WebTelemetryAnchor>
                     <TypeIt options={{speed:0.01}}>
                     <ol className='text-base m-4 list-decimal'>
                         <li className='m-4'>
@@ -34,12 +35,12 @@ const IntelHackathon:React.FC<{
                 </div>
 
                 <div className="w-full flex justify-center text-base ">
-                    <a 
+                    <WebTelemetryAnchor 
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://github.com/professorcode1/IntelHack/tree/main"
                     >
                         Github
-                    </a>
+                    </WebTelemetryAnchor>
 
                 </div>
             </div>

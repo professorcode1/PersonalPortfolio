@@ -1,6 +1,7 @@
 import TypeIt from "typeit-react";
 
 import React from 'react';
+import { WebTelemetryAnchor } from "./WebTelAnchor";
 
 const EventAnalysis:React.FC<{
 
@@ -43,18 +44,18 @@ const EventAnalysis:React.FC<{
                     </ol>
                 </TypeIt>
                 <div className="w-full flex justify-center text-base absolute bottom-4">
-                    <a 
+                    <WebTelemetryAnchor
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://github.com/professorcode1/Event-Analysis"
                     >
                         Github
-                    </a>
-                    <a 
+                    </WebTelemetryAnchor>
+                    <WebTelemetryAnchor 
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://pypi.org/project/event-analysis/"
                     >
                         PyPi
-                    </a>
+                    </WebTelemetryAnchor>
 
                 </div>
             </div>

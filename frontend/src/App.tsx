@@ -5,6 +5,7 @@ import { NavBar } from './components/NavBar';
 import { ContactMe } from './screens/ContactMe';
 import axios from 'axios';
 import { GetSessionToken, SetSessionToken } from './utils/Cookie';
+import { ReportWebTelemetryEvent, getCurrentTimeFromInterntionalServer } from './utils/reportWebTelemetry';
 
 
 function App() {
@@ -12,16 +13,22 @@ function App() {
   React.useEffect(()=>{
     (async ()=>{
       try {
-        const potential_token = GetSessionToken();
+        let potential_token = GetSessionToken();
         if(potential_token){
           console.log("got token from cookie", potential_token)
-          return ;
+        }else{
+          const tokenRequest = axios.get("/webTelemetry/getNewToken", {
+          });
+          const new_token = (await tokenRequest).data
+          console.log("generated token on server, ", new_token)
+          SetSessionToken(new_token);
+          potential_token = new_token;
         }
-        const tokenRequest = axios.get("http://localhost:8000/webTelemetry/getNewToken", {
+        await ReportWebTelemetryEvent({
+          type:"Pageview",
+          sessionId:potential_token!,
+          time:await getCurrentTimeFromInterntionalServer()
         });
-        const new_token = (await tokenRequest).data
-        console.log("generated token on server, ", new_token)
-        SetSessionToken(new_token);
       } catch (error) {
         console.log(error)
       }

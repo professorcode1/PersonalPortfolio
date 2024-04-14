@@ -7,6 +7,7 @@ import MLSC_Landing_Page from '../assets/MLSC Landing Page.png'
 import MLSC_Register_Page from '../assets/MLSC Register Page.png'
 import MLSC_Question_Page from '../assets/MLSC Question Page.png'
 import MLSC_Leaderboard_Page from '../assets/MLSC Leaderboard Page.png'
+import { WebTelemetryAnchor } from './WebTelAnchor';
 const MLSCHuntPortal:React.FC<{
 
 }> = () => {
@@ -56,12 +57,12 @@ const MLSCHuntPortal:React.FC<{
                 </div>
 
                 <div className="w-full flex justify-center text-base ">
-                    <a 
+                    <WebTelemetryAnchor 
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://github.com/professorcode1/MSCProject"
                     >
                         Github
-                    </a>
+                    </WebTelemetryAnchor>
 
                 </div>
             </div>
