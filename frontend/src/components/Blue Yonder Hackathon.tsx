@@ -1,5 +1,6 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
+import { WebTelemetryAnchor } from './WebTelAnchor';
 
 const BlueYonderHackathon:React.FC<{
 
@@ -28,12 +29,12 @@ const BlueYonderHackathon:React.FC<{
                     </ol>
                 </TypeIt>
                 <div className="w-full flex justify-center text-base absolute bottom-4">
-                    <a 
+                    <WebTelemetryAnchor 
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://github.com/professorcode1/BlueYonderDemandSupply"
                     >
                         Github
-                    </a>
+                    </WebTelemetryAnchor>
                 </div>
             </div>
         </div>

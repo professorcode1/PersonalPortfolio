@@ -6,6 +6,7 @@ import Landing_Page from '../assets/College Scheduler Landing Page.png'
 import Home_page from '../assets/College Scheduler Home page.png'
 import Course_Page from '../assets/College Scheduler Course Page.png'
 import Scheduling_page from '../assets/College Scheduler Scheduling page.png'
+import { WebTelemetryAnchor } from './WebTelAnchor';
 
 const CollegeScheduler:React.FC<{
 
@@ -60,12 +61,12 @@ const CollegeScheduler:React.FC<{
                 </div>
 
                 <div className="w-full flex justify-center text-base ">
-                    <a 
+                    <WebTelemetryAnchor
                         className="m-2 p-2 rounded-lg border border-black w-24 text-center"
                         href="https://github.com/professorcode1/College-Time-Table-Scheduler"
                     >
                         Github
-                    </a>
+                    </WebTelemetryAnchor>
 
                 </div>
             </div>
