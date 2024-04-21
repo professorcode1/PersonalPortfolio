@@ -1,1 +1,1 @@
-export const URLBase = "http://localhost:8000"
+export const URLBase = "http://localhost:8000/collegeSchduler"

@@ -15,4 +15,4 @@ const CollegeSchedulerConfig = {
 }
 const web_telemetry_connection = mysql.createConnection(WebTelemetryConnetionConfig);
 const college_scheduler_connection = mysql.createConnection(CollegeSchedulerConfig);
-export {web_telemetry_connection, college_scheduler_connection}
+export {web_telemetry_connection, college_scheduler_connection, CollegeSchedulerConfig}

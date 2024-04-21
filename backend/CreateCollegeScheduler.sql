@@ -5,12 +5,12 @@ USE `collegeScheduler`;
 SET NAMES utf8 ;
 SET character_set_client = utf8mb4 ;
 
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `session_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,
-  `expires` int(11) unsigned NOT NULL,
-  `data` mediumtext COLLATE utf8mb4_bin,
-  PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB;
+-- CREATE TABLE IF NOT EXISTS `sessions` (
+--   `session_id` varchar(128) COLLATE utf8mb4_bin NOT NULL,
+--   `expires` int(11) unsigned NOT NULL,
+--   `data` mediumtext COLLATE utf8mb4_bin,
+--   PRIMARY KEY (`session_id`)
+-- ) ENGINE=InnoDB;
 -- to be used with express-mysql-session
 
 CREATE TABLE `university`(
@@ -23,8 +23,8 @@ CREATE TABLE `university`(
     PRIMARY KEY (`university_id`),
     UNIQUE (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-INSERT INTO university(`university_id`,`name`, `email`, `password`, `periods_per_day`, `days_per_week`) 
-VALUES (1, "Thapar", "raghkum2000@gmail.com", "$2b$10$sEzCeYE0vIN7cdVE3wHRdeUHhKSa.erZU1Th9j3M6n/uibb0Hm/5G", 8, 5);
+-- INSERT INTO university(`university_id`,`name`, `email`, `password`, `periods_per_day`, `days_per_week`) 
+-- VALUES (1, "Thapar", "raghkum2000@gmail.com", "$2b$10$sEzCeYE0vIN7cdVE3wHRdeUHhKSa.erZU1Th9j3M6n/uibb0Hm/5G", 8, 5);
 
 CREATE TABLE `room`(
     `room_id` INT NOT NULL AUTO_INCREMENT,

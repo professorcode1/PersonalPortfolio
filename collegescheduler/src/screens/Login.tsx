@@ -2,12 +2,33 @@ import * as React from "react"
 import LoginImage from "../assets/login.jpg"
 import { useAppDispatch } from "../redux/main";
 import { setScreen } from "../redux/screen";
+import axios from "axios";
+import { URLBase } from "../utils/URLBase";
+import Cookies from 'js-cookie';
+
 const Login:React.FC<{}> = ()=>{
     const [LoginFormState, setLoginFormState] = React.useState({
-        username:"",
+        email:"",
         password:""
     });
     const dispatcher = useAppDispatch();
+    const OnLoginSubmit = async () => {
+        try {
+            const loginRes = await axios.post(`${URLBase}/login`,LoginFormState, {
+                withCredentials:true
+            });
+            
+            if(loginRes.status === 200){
+                Cookies.set("token", loginRes.data)
+                dispatcher(setScreen("Homescreen"));
+            }else{
+                throw Error();
+            }
+        } catch (error) {
+            alert("Sorry! Unable to login.\t"+ (error as Error).message)
+        }
+
+    }
     return (
         <div className="relative h-screen w-screen">
             <img src={LoginImage} className="h-screen w-screen absolute top-0 left-0" />
@@ -19,10 +40,10 @@ const Login:React.FC<{}> = ()=>{
                             <p className="text-xl mr-2 w-24">Username</p>
                             <input 
                                 className="bg-white border-black border-2" 
-                                value={LoginFormState.username}
+                                value={LoginFormState.email}
                                 onChange={(event)=>setLoginFormState({
                                     password:LoginFormState.password,
-                                    username:event.target.value 
+                                    email:event.target.value 
                                 })}
                             />
                         </div>
@@ -32,7 +53,7 @@ const Login:React.FC<{}> = ()=>{
                                 type="password" className="bg-white border-black border-2"
                                 value={LoginFormState.password}
                                 onChange={(event)=>setLoginFormState({
-                                    username: LoginFormState.username,
+                                    email: LoginFormState.email,
                                     password:event.target.value,
                                 })} 
                             />
@@ -40,6 +61,7 @@ const Login:React.FC<{}> = ()=>{
                         <div className="flex">
                             <button 
                                 className="opacity-100 w-24 bg-green-800 text-white font-bold p-2 rounded mr-2"
+                                onClick={OnLoginSubmit}
                             >Submit</button>
                             <button 
                                 className="opacity-100 w-24 bg-sky-800 text-white font-bold p-2 rounded"
