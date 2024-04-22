@@ -27,7 +27,6 @@ const LoginRoute = async (req:Request, res:Response) => {
         query_,
         college_scheduler_connection
     )
-    console.log(query_, users_list)
     if (users_list.length === 0) {
         return res.status(401).send("Invalid username"); 
     }
