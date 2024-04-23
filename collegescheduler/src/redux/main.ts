@@ -2,9 +2,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import screenSlice from "./screen"
+import waitingSlice from "./waiting"
 export const store = configureStore({
   reducer: {
-    screen: screenSlice
+    screen: screenSlice,
+    waiting:waitingSlice
   }
 })
 

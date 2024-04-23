@@ -13,7 +13,7 @@ const Authenticate = async (req:Request, res:Response, next:NextFunction) => {
         req.user = {university_id};
         next();  
     } catch (error) {
-        res.status(403).send("invalid/expired token");
+        return res.status(403).send("invalid/expired token");
     }
 }
 

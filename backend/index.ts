@@ -4,7 +4,7 @@ import path from "path";
 import bodyParser from "body-parser";
 import {  college_scheduler_connection, web_telemetry_connection } from "./src/connections";
 import { GetNewTokenCallback, PostWebTelemetryCallback } from "./src/webTelemetry/main";
-import { Authenticate, LoginRoute, RegisterRoute } from "./src/college scheduler/routs";
+import { Authenticate, LoginRoute, RegisterRoute } from "./src/college scheduler/auth";
 import { extend_id_to_24_char, groupBy } from "./src/college scheduler/utils";
 import { async_get_query } from "./src/utils/db";
 // @ts-ignore
@@ -39,7 +39,9 @@ app.post("/webTelemetry", PostWebTelemetryCallback);
 //
 app.post("/collegeSchduler/login", LoginRoute);
 app.post("/collegeSchduler/register", RegisterRoute)
-
+app.get("/collegeSchduler/AmIAuthenticated", Authenticate, (req, res) => {
+    return res.status(200).send();
+})
 
 app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => {
     const [[user_Object],
