@@ -11,6 +11,11 @@ function App() {
   const screen = useAppSelector(s=>s.screen);
   const Screen = ScreenNameToComponentMapping.get(screen)!;
   const waiting = useAppSelector(s => s.waiting);
+  const view_schedules = new URLSearchParams(window.location.search).get("view_schedules");
+  const dispatcher = useAppDispatch();
+  if( screen !== "View Schedules" &&  view_schedules === "true"){
+    dispatcher(setScreen("View Schedules"))
+  }
   return (
     <>
     {waiting && <Waiting />}

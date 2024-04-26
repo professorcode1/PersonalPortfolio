@@ -17,7 +17,7 @@ const SCREENS = [
     "Professor",
     "Room",
     "Course",
-    "Period"
+    "Period",
 ] as const 
 
 type EScreen = typeof SCREENS[number]
@@ -32,7 +32,7 @@ const ScreenNameToComponentMapping = new Map<EScreen, React.FC<{}>>([
     ["Professor", ProfessorScreen],
     ["Room", RoomScreen],
     ["Course", CourseScreen],
-    ["Period", PeriodsScreen]
+    ["Period", PeriodsScreen],
 ]);
 
 export type {EScreen}

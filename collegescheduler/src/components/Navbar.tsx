@@ -1,9 +1,10 @@
 import * as React from "react";
-import { useAppDispatch } from "../redux/main";
+import { useAppDispatch, useAppSelector } from "../redux/main";
 import { setScreen } from "../redux/screen";
 
 const Navbar:React.FC<{}> = () => {
     const dispatcher = useAppDispatch();
+    const number_of_periods = useAppSelector(s => s.user?.periods.length)
     return (
         <div style={{
             zIndex:10000
@@ -37,7 +38,15 @@ const Navbar:React.FC<{}> = () => {
                 >Course</p>
             </div>
             <div>
-                <p className="px-2 cursor-pointer">
+                <p
+                    className="px-2 cursor-pointer"
+                    onClick={()=>{
+                        if(number_of_periods === 0){
+                            return alert("please make some periods first")
+                        }
+                        window.location.href = "http://localhost:8000/collegeSchduler/generateSchedule"
+                    }}
+                >
                     Genereate Schedule
                 </p>
             </div>

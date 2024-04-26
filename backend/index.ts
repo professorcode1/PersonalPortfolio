@@ -135,6 +135,46 @@ app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => 
     res.send(user_Object);
 });
 
+app.get("/collegeSchduler/generateSchedule", (req, res)=>{
+    res.sendFile(path.join(__dirname, "webPages","waitingAnt.html"));
+});
+app.get("/particles.js-master/demo/js/app.js", (req, res) =>{
+    res.sendFile(path.join(__dirname, "build","static", "particles.js-master","demo", "js", "app.js"));
+});
+app.get("/collegeSchduler/particles.js-master/particles.js", (req, res) =>{
+    res.sendFile(path.join(__dirname, "build","static", "particles.js-master","particles.js"));
+});
+app.get("/collegeSchduler/ant-colonoy-webambly/scheduler.js", (req, res)=>{
+    res.sendFile(path.join(__dirname, "build","static", "ant-colonoy-webambly", "scheduler.js"));
+})
+app.get("/collegeSchduler/ant-colonoy-webambly/ant_colony.js", (req, res)=>{
+    res.sendFile(path.join(__dirname, "build","static", "ant-colonoy-webambly", "ant_colony.js"));
+});
+app.get("/collegeSchduler/ant-colonoy-webambly/ant_colony.wasm", (req, res)=>{
+    res.sendFile(path.join(__dirname, "build","static", "ant-colonoy-webambly", "ant_colony.wasm"));
+});
+app.get("/collegeSchduler/graph/lib/graph.js", (req, res)=>{
+    res.sendFile(path.join(__dirname, "build","static", "graph", "lib", "graph.js"));
+});
+
+app.post("/collegeSchduler/generateSchedule", async (req, res)=>{
+    const coloring = req.body;
+    console.log(coloring);
+    try{
+        let sql_string_r = "";
+        for(let period_Info in coloring){
+            let [period_id, length_value, frequency_value]  = period_Info.match(/\d+/g) as unknown as [number,number,number];
+            let color = coloring[period_Info];
+            sql_string_r += `(${period_id}, ${length_value}, ${frequency_value}, ${color}),`;
+        }
+        await async_get_query(`CALL delete_university_schedule(${(req as any).user.university_id})`, college_scheduler_connection);
+        await async_get_query("INSERT INTO period_coloring VALUES " + sql_string_r.substring(0, sql_string_r.length - 1), college_scheduler_connection);
+    }catch(err){
+        console.log(err);
+        return res.send(err);
+    }
+    return res.send("done");
+})
 app.listen(process.env.PORT, ()=>{
     console.log("server is listening ")
 });
