@@ -4,11 +4,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import screenSlice from "./screen"
 import waitingSlice from "./waiting"
 import userSlice from "./User"
+import courseSlice from "./SelectedCourse"
 export const store = configureStore({
   reducer: {
     screen: screenSlice,
     waiting:waitingSlice,
-    user:userSlice
+    user:userSlice,
+    course:courseSlice
   }
 })
 

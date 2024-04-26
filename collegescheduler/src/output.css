@@ -569,6 +569,10 @@ video {
   top: 0px;
 }
 
+.right-0 {
+  right: 0px;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -736,6 +740,10 @@ video {
   width: 83.333333%;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
 .flex-none {
   flex: none;
 }
@@ -780,6 +788,10 @@ video {
   overflow: auto;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .overflow-clip {
   overflow: clip;
 }
@@ -798,6 +810,10 @@ video {
 
 .overflow-y-clip {
   overflow-y: clip;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
 }
 
 .whitespace-nowrap {
@@ -953,6 +969,10 @@ video {
   padding-top: 0.25rem;
 }
 
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -980,6 +1000,11 @@ video {
 
 .text-xl {
   font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -1026,6 +1051,10 @@ video {
 
 .opacity-90 {
   opacity: 0.9;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .\[key\:string\] {

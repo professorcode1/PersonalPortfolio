@@ -12,6 +12,7 @@ import { CreateProfessor, DeleteProfessor } from "./src/college scheduler/profes
 import { CreateGroup, DeletGroup } from "./src/college scheduler/group";
 import { CreateRoom, DeletRoom } from "./src/college scheduler/room";
 import { CourseAssetsNameList, CreateCourse, DeleteCourse } from "./src/college scheduler/course";
+import { CreatePeriod, DeletePeriod } from "./src/college scheduler/Period";
 // @ts-ignore
 const cookieparse = require("cookie-parser")
 
@@ -62,6 +63,8 @@ app.get("/collegeSchduler/deleteCourse/:courseId", Authenticate, DeleteCourse);
 app.post("/collegeSchduler/course", Authenticate, CreateCourse);
 app.get("/collegeSchduler/CourseAssets/:courseId", Authenticate,CourseAssetsNameList)
 
+app.get("/collegeSchduler/deletePeriod/:periodId", Authenticate, DeletePeriod);
+app.post("/collegeSchduler/period", Authenticate, CreatePeriod);
 
 app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => {
     const [[user_Object],
@@ -112,7 +115,7 @@ app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => 
         professor.periodsTaken = [];
     }
     for(let period of period_data){
-        period.groupsAttending = period_group_grouped.get(period._id).map((x:any) => x.group_id);
+        period.groupsAttending = period_group_grouped.get(period._id)?.map((x:any) => x.group_id);
         if(period_ban_times_grouped.has(period._id))
             period.periodAntiTime = period_ban_times_grouped.get(period._id).map((x:any) => x.ban_time);
         else
@@ -120,6 +123,7 @@ app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => 
         period._id = extend_id_to_24_char(period._id);
         room_map.get(period.roomUsed).periodsUsedIn.push(period._id);
         professor_map.get(period.profTaking).periodsTaken.push(period._id);
+        if(period.groupsAttending === undefined) period.groupsAttending = []
         for(let group_id of period.groupsAttending)
             group_map.get(group_id).periodsAttended.push(period._id);
     }

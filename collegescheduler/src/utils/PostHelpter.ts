@@ -18,7 +18,7 @@ async function PostHelper(
         })).data;
         setUser(new_user);
         setWaiting(false);
-        alert("done!");
+        // alert("done!");
     } catch (error) {
         alert("some error occured");
         console.error(error);
@@ -41,7 +41,7 @@ async function GetHelper(
         })).data;
         setUser(new_user);
         setWaiting(false);
-        alert("done!");
+        // alert("done!");
     } catch (error) {
         alert("some error occured");
         console.error(error);

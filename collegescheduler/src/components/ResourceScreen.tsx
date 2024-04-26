@@ -6,11 +6,12 @@ import { CreateProfessor, SingleProfessor } from "./Professor";
 import { CreateGroup, SingleGroup } from "./Groups";
 import { CreateRoom, SingleRoom } from "./Room";
 import { CreateCourse, SingleCourse } from "./Course";
+import { CreatePeriod, SinglePeriod } from "./Periods";
 
 
 const ResourceScreen:React.FC<{
     title_text:string,
-    asset_name:"rooms"|"professors"|"groups"|"courses"
+    asset_name:"rooms"|"professors"|"groups"|"courses"|"periods"
 }> = (
     {
         title_text,
@@ -18,7 +19,8 @@ const ResourceScreen:React.FC<{
     }
 ) => {
     const [showCreateProfessor, setShowCreateProfessor] = React.useState(false);
-    const {numberOfDays :days_per_week, periodsPerDay :periods_per_day, professors ,groups, rooms, courses} = useAppSelector(s => s.user!);
+    const {numberOfDays :days_per_week, periodsPerDay :periods_per_day, professors ,groups, rooms, courses, periods} = useAppSelector(s => s.user!);
+    const selected_course = useAppSelector( s => s.course)
     const CreateComponenet = (()=>{
         if(asset_name === "professors"){
             return CreateProfessor
@@ -27,8 +29,10 @@ const ResourceScreen:React.FC<{
         }
         else if(asset_name === "groups"){
             return CreateGroup
-        }else{
+        }else if(asset_name === "courses"){
             return CreateCourse;
+        }else{
+            return CreatePeriod;
         }
     })();
     const SingleViewList = (()=>{
@@ -38,8 +42,11 @@ const ResourceScreen:React.FC<{
             return groups.map(group => <SingleGroup group={group} key={"group" + group._id} />)
         }else if(asset_name === "rooms"){
             return rooms.map(room => <SingleRoom room={room} key={"room" + room._id} />);
-        }else{
-            return courses.map(course => <SingleCourse course={course} />)
+        }else if(asset_name === "courses"){
+            return courses.map(course => <SingleCourse course={course} key={"course" + course._id} />)
+        }
+        else{
+            return periods.filter(period => period.parentCourse === selected_course).map(period => <SinglePeriod period={period} key={"period" + period._id} />)
         }
     })();
     return (

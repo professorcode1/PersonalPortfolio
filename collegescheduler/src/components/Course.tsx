@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from "../redux/main";
 import * as React from "react";
 import axios from "axios";
 import { URLBase } from "../utils/URLBase";
+import { setCourse } from "../redux/SelectedCourse";
+import { setScreen } from "../redux/screen";
 const SingleCourse:React.FC<{
     course:ICourse, 
 }> = (props) => {
@@ -30,7 +32,8 @@ const SingleCourse:React.FC<{
                 setTaughtTo((group_names.map((x:any) => x.name) as string[]).join(", "));
                 setTaughtBy((prof_namse.map((x:any) => x.name) as string[]).join(", "));
             } catch (error) {
-                
+                setTaughtTo("(Some error occured)")
+                setTaughtBy("(Some error occured)")
             }
 
         })()
@@ -41,12 +44,21 @@ const SingleCourse:React.FC<{
             <p className="pl-1 pt-0">
                 {props.course.courseName}
             </p>
-            <p className="text-sm p-1">Taught by:{taugthBy}</p>
-            <p className="text-sm p-1">Taught to:{taughtTo}</p>
+            <p className="text-sm p-1 h-32 overflow-hidden text-ellipsis">Taught by:{taugthBy}</p>
+            <p className="text-sm p-1 h-16 overflow-hidden text-ellipsis">Taught to:{taughtTo}</p>
             <a 
                 className="absolute bottom-0 text-sm p-2 pl-1 text-blue-500 cursor-pointer"
                 onClick={OnDelete}
             >Delete</a>
+            <button 
+                className="absolute bottom-0 right-0 pr-2 text-sm p-2 pl-1 text-blue-500 cursor-pointer"
+                onClick={()=>{
+                    dispatcher(setCourse(props.course._id));
+                    dispatcher(setScreen("Period"))
+                }}
+            >
+                CRUD Periods
+            </button>
         </div>
     );
 }
@@ -55,16 +67,19 @@ const CouseAssetPicker:React.FC<{
     asset:IUnavailability,
     asset_id_to_name_mapping:{[key:string]:string}
     setAsset:(a:IUnavailability)=>void,
-    assetKeyStart:string
+    assetKeyStart:string,
+    slice_index?:number
 }> = ({
     asset,
     asset_id_to_name_mapping,
     setAsset,
-    assetKeyStart
+    assetKeyStart,
+    slice_index
 }) => {
+    if(slice_index === undefined) slice_index = 1;
     return (
         <div className="flex overflow-scroll h-16 overflow-y-clip flex-none">
-            {Object.entries(asset).map(([id, status])=>[id.slice(1),status]).map(([id,status])=>[asset_id_to_name_mapping[id] as string, id,status]).map(([name,id, status])=>{
+            {Object.entries(asset).map(([id, status])=>[id.slice(slice_index),status]).map(([id,status])=>[asset_id_to_name_mapping[id] as string, id,status]).map(([name,id, status])=>{
                 return (
                     <p 
                         className={" w-32 mx-2 p-2 w-full whitespace-nowrap border-2 rounded-lg cursor-pointer " + (status === "off" ? " border-red-400" : " border-green-400")} 
@@ -128,4 +143,4 @@ const CreateCourse:React.FC<{
     )
 }
 
-export {SingleCourse, CreateCourse}
+export {SingleCourse, CreateCourse, CouseAssetPicker}
