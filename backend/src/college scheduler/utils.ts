@@ -4,7 +4,7 @@ import { async_get_query } from "../utils/db";
 async function insert_many_hlpr(
     table_name_and_fields:string, 
     left_value:string, 
-    right_values:string,
+    right_values:number[],
     connection:Connection
 ) {
     let sql_professor_ban_time_query = "INSERT INTO " + table_name_and_fields + " VALUES "

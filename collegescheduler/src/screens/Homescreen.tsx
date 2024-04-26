@@ -82,19 +82,19 @@ const Homescreen:React.FC<{}> = () => {
                     </p>
                     <div className="w-screen h-[90%] flex">
                         <div className="h-full w-1/2 grid grid-cols-2">
-                            <div className="p-1 bg-white rounded-md m-1">
+                            <div className="p-1 bg-white rounded-md m-1 cursor-pointer">
                                 <img className="" src={CourseImage} />
                                 <p>Course</p>
                             </div>
-                            <div className="p-1 bg-white rounded-md m-1">
+                            <div className="p-1 bg-white rounded-md m-1 cursor-pointer">
                                 <img className="" src={GroupImage} />
                                 <p>Group</p>
                             </div>
-                            <div className="p-1 bg-white rounded-md m-1">
+                            <div className="p-1 bg-white rounded-md m-1 cursor-pointer">
                                 <img className="" src={ProfessorImage} />
                                 <p>Professor</p>
                             </div>
-                            <div className="p-1 bg-white rounded-md m-1">
+                            <div className="p-1 bg-white rounded-md m-1 cursor-pointer">
                                 <img className="" src={RoomImage} />
                                 <p>Room</p>
                             </div>

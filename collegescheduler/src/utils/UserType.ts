@@ -44,4 +44,4 @@ interface IUser{
     periods:IPeriod[]
 }
 
-export type {IUser}
+export type {IUser, IRoom,IProfessor,IGroup,ICourse,IPeriod}

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IUser } from '../utils/UserType'
-export const waitingSlice = createSlice({
-  name: 'waiting',
+export const userSlice = createSlice({
+  name: 'user',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState:null as (IUser|null),
   reducers: {
@@ -11,8 +11,10 @@ export const waitingSlice = createSlice({
   }
 })
 
-export const { setUser } = waitingSlice.actions
+export const { 
+  setUser
+} = userSlice.actions
 
 
 
-export default waitingSlice.reducer
+export default userSlice.reducer

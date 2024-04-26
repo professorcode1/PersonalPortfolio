@@ -7,6 +7,8 @@ import { GetNewTokenCallback, PostWebTelemetryCallback } from "./src/webTelemetr
 import { Authenticate, LoginRoute, RegisterRoute } from "./src/college scheduler/auth";
 import { extend_id_to_24_char, groupBy } from "./src/college scheduler/utils";
 import { async_get_query } from "./src/utils/db";
+import { SetParameter } from "./src/college scheduler/parameter";
+import { CreateProfessor, DeleteProfessor } from "./src/college scheduler/professor";
 // @ts-ignore
 const cookieparse = require("cookie-parser")
 
@@ -38,10 +40,15 @@ app.post("/webTelemetry", PostWebTelemetryCallback);
 
 //
 app.post("/collegeSchduler/login", LoginRoute);
-app.post("/collegeSchduler/register", RegisterRoute)
+app.post("/collegeSchduler/register", RegisterRoute);
 app.get("/collegeSchduler/AmIAuthenticated", Authenticate, (req, res) => {
     return res.status(200).send();
-})
+});
+app.post("/collegeSchduler/parameter", Authenticate, SetParameter);
+
+app.post("/collegeSchduler/professor", Authenticate, CreateProfessor);
+
+app.get("/collegeSchduler/deleteProfessor/:professorId", Authenticate, DeleteProfessor);
 
 app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => {
     const [[user_Object],

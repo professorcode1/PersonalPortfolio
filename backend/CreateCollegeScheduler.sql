@@ -170,9 +170,9 @@ BEGIN
         );  
     
     UPDATE `period` SET set_time = NULL WHERE period_id IN 
-        (SELECT period_id FROM (SELECT course_id FROM course WHERE university_id = id) AS `this_university_courses` 
+        (select period_id from (SELECT period_id FROM (SELECT course_id FROM course WHERE university_id = id) AS `this_university_courses` 
             INNER JOIN `period` ON `period`.course_id = this_university_courses.course_id 
-        );  
+        ) as Arb);  
 
     DELETE FROM room_ban_times WHERE room_id IN (SELECT room_id FROM room WHERE university_id = id);
     DELETE FROM professor_ban_times WHERE professor_id IN (SELECT professor_id FROM professor WHERE university_id = id);
