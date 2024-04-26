@@ -5,11 +5,12 @@ import { IUser } from "../utils/UserType";
 import { CreateProfessor, SingleProfessor } from "./Professor";
 import { CreateGroup, SingleGroup } from "./Groups";
 import { CreateRoom, SingleRoom } from "./Room";
+import { CreateCourse, SingleCourse } from "./Course";
 
 
 const ResourceScreen:React.FC<{
     title_text:string,
-    asset_name:"rooms"|"professors"|"groups"
+    asset_name:"rooms"|"professors"|"groups"|"courses"
 }> = (
     {
         title_text,
@@ -17,15 +18,17 @@ const ResourceScreen:React.FC<{
     }
 ) => {
     const [showCreateProfessor, setShowCreateProfessor] = React.useState(false);
-    const {numberOfDays :days_per_week, periodsPerDay :periods_per_day, professors ,groups, rooms} = useAppSelector(s => s.user!);
+    const {numberOfDays :days_per_week, periodsPerDay :periods_per_day, professors ,groups, rooms, courses} = useAppSelector(s => s.user!);
     const CreateComponenet = (()=>{
         if(asset_name === "professors"){
             return CreateProfessor
         }else if(asset_name === "rooms"){
             return CreateRoom
         }
-        else{
+        else if(asset_name === "groups"){
             return CreateGroup
+        }else{
+            return CreateCourse;
         }
     })();
     const SingleViewList = (()=>{
@@ -33,10 +36,12 @@ const ResourceScreen:React.FC<{
             return professors.map(prof => <SingleProfessor professor={prof} key={"prof" + prof._id} />);
         }else if(asset_name === "groups"){
             return groups.map(group => <SingleGroup group={group} key={"group" + group._id} />)
-        }else{
+        }else if(asset_name === "rooms"){
             return rooms.map(room => <SingleRoom room={room} key={"room" + room._id} />);
+        }else{
+            return courses.map(course => <SingleCourse course={course} />)
         }
-    })()
+    })();
     return (
         <div className="overflow-x-clip">
             <Navbar />

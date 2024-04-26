@@ -1,15 +1,9 @@
 import * as React from "react";
 import { Navbar } from "../components/Navbar";
+import { ResourceScreen } from "../components/ResourceScreen";
 
 const CourseScreen:React.FC<{}> = () => {
-    return (
-        <>
-        <Navbar />
-        <div>
-            Hello world I am Course
-        </div>
-        </>
-    )
+    return <ResourceScreen title_text="Course" asset_name="courses" />
 }
 
 export {CourseScreen}
