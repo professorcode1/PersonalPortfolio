@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 import { IUser } from "../utils/UserType";
 import { CreateProfessor, SingleProfessor } from "./Professor";
 import { CreateGroup, SingleGroup } from "./Groups";
+import { CreateRoom, SingleRoom } from "./Room";
 
 
 const ResourceScreen:React.FC<{
@@ -16,12 +17,14 @@ const ResourceScreen:React.FC<{
     }
 ) => {
     const [showCreateProfessor, setShowCreateProfessor] = React.useState(false);
-    const {numberOfDays :days_per_week, periodsPerDay :periods_per_day, professors ,groups} = useAppSelector(s => s.user!);
-    const assert = useAppSelector(s=>s.user!)[asset_name];
+    const {numberOfDays :days_per_week, periodsPerDay :periods_per_day, professors ,groups, rooms} = useAppSelector(s => s.user!);
     const CreateComponenet = (()=>{
         if(asset_name === "professors"){
             return CreateProfessor
-        }else{
+        }else if(asset_name === "rooms"){
+            return CreateRoom
+        }
+        else{
             return CreateGroup
         }
     })();
@@ -31,7 +34,7 @@ const ResourceScreen:React.FC<{
         }else if(asset_name === "groups"){
             return groups.map(group => <SingleGroup group={group} key={"group" + group._id} />)
         }else{
-            return professors.map(prof => <SingleProfessor professor={prof} key={prof._id} />);
+            return rooms.map(room => <SingleRoom room={room} key={"room" + room._id} />);
         }
     })()
     return (

@@ -10,6 +10,7 @@ import { async_get_query } from "./src/utils/db";
 import { SetParameter } from "./src/college scheduler/parameter";
 import { CreateProfessor, DeleteProfessor } from "./src/college scheduler/professor";
 import { CreateGroup, DeletGroup } from "./src/college scheduler/group";
+import { CreateRoom, DeletRoom } from "./src/college scheduler/room";
 // @ts-ignore
 const cookieparse = require("cookie-parser")
 
@@ -52,6 +53,9 @@ app.get("/collegeSchduler/deleteProfessor/:professorId", Authenticate, DeletePro
 
 app.get("/collegeSchduler/deleteGroup/:groupId", Authenticate, DeletGroup);
 app.post("/collegeSchduler/group", Authenticate, CreateGroup);
+
+app.get("/collegeSchduler/deleteroom/:roomId", Authenticate, DeletRoom);
+app.post("/collegeSchduler/room", Authenticate, CreateRoom);
 
 app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => {
     const [[user_Object],
