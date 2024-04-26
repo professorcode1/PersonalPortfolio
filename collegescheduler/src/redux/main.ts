@@ -5,12 +5,14 @@ import screenSlice from "./screen"
 import waitingSlice from "./waiting"
 import userSlice from "./User"
 import courseSlice from "./SelectedCourse"
+import scheduleSlice from './SelectedSchedule'
 export const store = configureStore({
   reducer: {
     screen: screenSlice,
     waiting:waitingSlice,
     user:userSlice,
-    course:courseSlice
+    course:courseSlice,
+    scheduleId: scheduleSlice
   }
 })
 

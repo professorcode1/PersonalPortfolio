@@ -6,6 +6,7 @@ import { ViewSchedules } from "./ViewSchedules"
 import { Homescreen } from "./Homescreen"
 import { DaysHoursScreen } from "./DaysHours"
 import { CourseScreen, RoomScreen, ProfessorScreen, GroupScreen, PeriodsScreen } from "./Assets"
+import { Schedule } from "./Schedule"
 const SCREENS = [
     "Landing",
     "Homescreen",
@@ -18,6 +19,7 @@ const SCREENS = [
     "Room",
     "Course",
     "Period",
+    "Schedule"
 ] as const 
 
 type EScreen = typeof SCREENS[number]
@@ -33,6 +35,7 @@ const ScreenNameToComponentMapping = new Map<EScreen, React.FC<{}>>([
     ["Room", RoomScreen],
     ["Course", CourseScreen],
     ["Period", PeriodsScreen],
+    ["Schedule", Schedule]
 ]);
 
 export type {EScreen}

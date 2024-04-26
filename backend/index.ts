@@ -13,6 +13,7 @@ import { CreateGroup, DeletGroup } from "./src/college scheduler/group";
 import { CreateRoom, DeletRoom } from "./src/college scheduler/room";
 import { CourseAssetsNameList, CreateCourse, DeleteCourse } from "./src/college scheduler/course";
 import { CreatePeriod, DeletePeriod } from "./src/college scheduler/Period";
+import { GetSchedule, GetUserObject, PostSchedule } from "./src/college scheduler/Schedule";
 // @ts-ignore
 const cookieparse = require("cookie-parser")
 
@@ -66,75 +67,8 @@ app.get("/collegeSchduler/CourseAssets/:courseId", Authenticate,CourseAssetsName
 app.get("/collegeSchduler/deletePeriod/:periodId", Authenticate, DeletePeriod);
 app.post("/collegeSchduler/period", Authenticate, CreatePeriod);
 
-app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => {
-    const [[user_Object],
-        rooms_data, room_ban_times,
-        groups_data, group_ban_times,
-        professors_data, professor_ban_times, 
-        courses_data, 
-        period_data, period_group, period_ban_times] = await async_get_query(
-            `CALL entire_university_information(${((req as any).user).university_id})`, 
-        college_scheduler_connection);
-
-    const room_ban_times_grouped = groupBy(room_ban_times, x => x.room_id);
-    const group_ban_times_grouped = groupBy(group_ban_times, x => x.group_id);
-    const professor_ban_times_grouped = groupBy(professor_ban_times, x => x.professor_id);
-    const period_group_grouped = groupBy(period_group, x => x.period_id);
-    const period_ban_times_grouped = groupBy(period_ban_times, x => x.period_id);
-    // console.log(room_ban_times_grouped ,group_ban_times_grouped ,professor_ban_times_grouped ,period_group_grouped ,period_ban_times_grouped);
-    const room_map = new Map();
-    const professor_map = new Map();
-    const group_map = new Map();
-    for(let room of rooms_data){
-        room_map.set(room._id, room); 
-        if(room_ban_times_grouped.has(room._id)){
-            room.unAvialability = room_ban_times_grouped.get(room._id).map((x:any) => x.ban_time);
-        }else{
-            room.unAvialability = [];
-        }
-        room.periodsUsedIn = [];
-    }
-
-    for(let group of groups_data){
-        group_map.set(group._id, group); 
-        if(group_ban_times_grouped.has(group._id)){
-            group.unAvialability = group_ban_times_grouped.get(group._id).map((x:any) => x.ban_time);
-        }else{
-            group.unAvialability = [];
-        }
-        group.periodsAttended = [];
-    }
-
-    for(let professor of professors_data){
-        professor_map.set(professor._id, professor); 
-        if(professor_ban_times_grouped.has(professor._id)){
-            professor.unAvialability = professor_ban_times_grouped.get(professor._id).map((x:any) => x.ban_time);
-        }else{
-            professor.unAvialability = [];
-        }
-        professor.periodsTaken = [];
-    }
-    for(let period of period_data){
-        period.groupsAttending = period_group_grouped.get(period._id)?.map((x:any) => x.group_id);
-        if(period_ban_times_grouped.has(period._id))
-            period.periodAntiTime = period_ban_times_grouped.get(period._id).map((x:any) => x.ban_time);
-        else
-            period.periodAntiTime = [];
-        period._id = extend_id_to_24_char(period._id);
-        room_map.get(period.roomUsed).periodsUsedIn.push(period._id);
-        professor_map.get(period.profTaking).periodsTaken.push(period._id);
-        if(period.groupsAttending === undefined) period.groupsAttending = []
-        for(let group_id of period.groupsAttending)
-            group_map.get(group_id).periodsAttended.push(period._id);
-    }
-    user_Object.rooms = rooms_data;
-    user_Object.professors = professors_data;
-    user_Object.groups = groups_data;
-    user_Object.courses = courses_data;
-    user_Object.periods = period_data;
-    res.send(user_Object);
-});
-
+app.get("/collegeSchduler/userDatabaseObject", Authenticate, GetUserObject);
+app.post("/collegeSchduler/generateSchedule",Authenticate, PostSchedule);
 app.get("/collegeSchduler/generateSchedule", (req, res)=>{
     res.sendFile(path.join(__dirname, "webPages","waitingAnt.html"));
 });
@@ -156,25 +90,17 @@ app.get("/collegeSchduler/ant-colonoy-webambly/ant_colony.wasm", (req, res)=>{
 app.get("/collegeSchduler/graph/lib/graph.js", (req, res)=>{
     res.sendFile(path.join(__dirname, "build","static", "graph", "lib", "graph.js"));
 });
-
-app.post("/collegeSchduler/generateSchedule", async (req, res)=>{
-    const coloring = req.body;
-    console.log(coloring);
-    try{
-        let sql_string_r = "";
-        for(let period_Info in coloring){
-            let [period_id, length_value, frequency_value]  = period_Info.match(/\d+/g) as unknown as [number,number,number];
-            let color = coloring[period_Info];
-            sql_string_r += `(${period_id}, ${length_value}, ${frequency_value}, ${color}),`;
-        }
-        await async_get_query(`CALL delete_university_schedule(${(req as any).user.university_id})`, college_scheduler_connection);
-        await async_get_query("INSERT INTO period_coloring VALUES " + sql_string_r.substring(0, sql_string_r.length - 1), college_scheduler_connection);
-    }catch(err){
-        console.log(err);
-        return res.send(err);
+app.get("/collegeSchduler/viewSchedules", async (req, res)=>{
+    try {
+        const scheduleArray = await async_get_query("SELECT `name` AS instituteName,email, university_id AS _id FROM university", college_scheduler_connection);
+        res.status(200).send(scheduleArray)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send();
     }
-    return res.send("done");
 })
+app.get("/collegeSchduler/schedule/:userId", GetSchedule);
+
 app.listen(process.env.PORT, ()=>{
     console.log("server is listening ")
 });
