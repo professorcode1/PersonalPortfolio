@@ -9,6 +9,7 @@ import { extend_id_to_24_char, groupBy } from "./src/college scheduler/utils";
 import { async_get_query } from "./src/utils/db";
 import { SetParameter } from "./src/college scheduler/parameter";
 import { CreateProfessor, DeleteProfessor } from "./src/college scheduler/professor";
+import { CreateGroup, DeletGroup } from "./src/college scheduler/group";
 // @ts-ignore
 const cookieparse = require("cookie-parser")
 
@@ -47,8 +48,10 @@ app.get("/collegeSchduler/AmIAuthenticated", Authenticate, (req, res) => {
 app.post("/collegeSchduler/parameter", Authenticate, SetParameter);
 
 app.post("/collegeSchduler/professor", Authenticate, CreateProfessor);
-
 app.get("/collegeSchduler/deleteProfessor/:professorId", Authenticate, DeleteProfessor);
+
+app.get("/collegeSchduler/deleteGroup/:groupId", Authenticate, DeletGroup);
+app.post("/collegeSchduler/group", Authenticate, CreateGroup);
 
 app.get("/collegeSchduler/userDatabaseObject", Authenticate, async (req,res) => {
     const [[user_Object],

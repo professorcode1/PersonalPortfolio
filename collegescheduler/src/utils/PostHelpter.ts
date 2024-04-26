@@ -26,4 +26,28 @@ async function PostHelper(
     setWaiting(false);
 }
 
-export {PostHelper}
+async function GetHelper(
+    setWaiting:(waiting:boolean)=>void,
+    setUser:(user:IUser)=>void,
+    post_request_path:string,
+){
+    setWaiting(true);
+    try {
+        await axios.get(URLBase + post_request_path,{
+            withCredentials:true
+        });
+        const new_user:IUser = (await axios.get(URLBase + "/userDatabaseObject", {
+            withCredentials:true
+        })).data;
+        setUser(new_user);
+        setWaiting(false);
+        alert("done!");
+    } catch (error) {
+        alert("some error occured");
+        console.error(error);
+    }
+    setWaiting(false);
+}   
+
+
+export {PostHelper, GetHelper}
