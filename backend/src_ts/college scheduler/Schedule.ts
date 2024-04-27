@@ -73,7 +73,7 @@ async function GetUserObject(req:Request,res:Response){
 
 async function PostSchedule(req:Request, res:Response){
     const coloring = req.body;
-    console.log(coloring);
+    // console.log(coloring);
     try{
         let sql_string_r = "";
         for(let period_Info in coloring){

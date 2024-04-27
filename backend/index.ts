@@ -44,6 +44,9 @@ app.get("/webTelemetry/getNewToken", GetNewTokenCallback);
 app.post("/webTelemetry", PostWebTelemetryCallback);
 
 //
+app.get("/collegeSchduler", (req, res)=>{
+    res.sendFile(path.join(__dirname,'build', 'college index.html'));
+})
 app.post("/collegeSchduler/login", LoginRoute);
 app.post("/collegeSchduler/register", RegisterRoute);
 app.get("/collegeSchduler/AmIAuthenticated", Authenticate, (req, res) => {
