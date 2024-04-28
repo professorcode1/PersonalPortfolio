@@ -6,10 +6,13 @@ import { ContactMe } from './screens/ContactMe';
 import axios from 'axios';
 import { GetSessionToken, SetSessionToken } from './utils/Cookie';
 import { ReportWebTelemetryEvent, getCurrentTimeFromInterntionalServer } from './utils/reportWebTelemetry';
+import { URLBASE } from './utils/URLBase';
+import { WebTelemetryView } from './screens/WebTelemetry';
 
 
 function App() {
   const [projectSelected, setProjectSelected] = React.useState<TProject|null>(null);
+  const [showWebTelemetryView, setShowWebTelemetryView] = React.useState(false);
   React.useEffect(()=>{
     (async ()=>{
       try {
@@ -17,7 +20,7 @@ function App() {
         if(potential_token){
           console.log("got token from cookie", potential_token)
         }else{
-          const tokenRequest = axios.get("/webTelemetry/getNewToken", {
+          const tokenRequest = axios.get(URLBASE + "/webTelemetry/getNewToken", {
           });
           const new_token = (await tokenRequest).data
           console.log("generated token on server, ", new_token)
@@ -33,7 +36,12 @@ function App() {
         console.log(error)
       }
     })()
-  }, [])
+  }, []);
+  // @ts-ignore
+  window.showWebTelemetryView = () => setShowWebTelemetryView(true)
+  if(showWebTelemetryView){
+    return <WebTelemetryView />
+  }
   return (
     <div className={(projectSelected ? 'overflow-y-cutoff' : 'overflow-y-scroll') + " h-screen "}>
       <NavBar  projectSelected={projectSelected} />

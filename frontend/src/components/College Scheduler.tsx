@@ -62,10 +62,16 @@ const CollegeScheduler:React.FC<{
 
                 <div className="w-full flex justify-center text-base ">
                     <WebTelemetryAnchor
-                        className="m-2 p-2 rounded-lg border border-black w-24 text-center"
+                        className="m-2 p-2 rounded-lg border border-black w-36 text-center"
                         href="https://github.com/professorcode1/College-Time-Table-Scheduler"
-                    >
+                        >
                         Github
+                    </WebTelemetryAnchor>
+                    <WebTelemetryAnchor
+                        className="m-2 p-2 rounded-lg border border-black w-36 text-center"
+                        href='/collegeSchduler'
+                    >
+                        Check it out!
                     </WebTelemetryAnchor>
 
                 </div>

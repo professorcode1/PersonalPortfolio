@@ -42,7 +42,7 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
                     </RoughNotation>
                     &nbsp; as well as work on data engineering solutions to improve the  &nbsp;                    
                     <RoughNotation type='underline' show={startNotation}>
-                        <WebTelemetryAnchor href='https://learn.microsoft.com/en-us/'>
+                        <WebTelemetryAnchor href='https://learn.microsoft.com/en-us/' className='whitespace-nowrap	'>
                             Microsoft learn platform 
                         </WebTelemetryAnchor>
                     </RoughNotation>
@@ -70,10 +70,6 @@ const AboutMe:React.FC<{
     });
     const [mountChildren, setMountChildren] = React.useState(false);
     React.useEffect(()=>{
-        setTimeout(()=>{
-            setStartNotation(true)
-
-        }, 750)
 
         setTimeout(()=>{
             setMountChildren(true);
@@ -85,7 +81,7 @@ const AboutMe:React.FC<{
         <div className='w-3/5 flex' ref={mainParent}>
         {mountChildren && <MyDescription startNotation={startNotation} />}
             {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>
-                <img src={MyImage} className='rounded-lg shadow-2xl h-96' style={{
+                <img src={MyImage} onLoad={()=>setStartNotation(true)} className='rounded-lg shadow-2xl h-96' style={{
                     objectFit:"cover"
                 }} />
             </div>}

@@ -123,10 +123,11 @@ const Projects:React.FC<{
     const ProjectContent =  ProjectComponent.get(selectedProject!) ?? null
     return (
         <div id="ProjectsScreen" className='h-screen flex flex-col  justify-evenly items-center '>
-            <div className='w-3/5 flex pt-8 pb-8'>
+            <div className='w-3/5 flex pt-8 pb-8 items-end'>
                 <h1 className='text-5xl MarartSansBoldFont'>
                     Projects
                 </h1>
+                <p>(Hover on the living shapes!)</p>
             </div>
             <div 
                 className='h-4/5 w-3/5 relative overflow-hidden text-black text-2xl ' 
@@ -142,23 +143,27 @@ const Projects:React.FC<{
 
                 {ProjectNames.map(project_name =>   
                     <div 
-                        className="shape cursor-pointer" 
+                        className="shape cursor-pointer relative"  
                         data-selected={selectedProject === project_name}
                         onClick={()=>{
                             setSelectedProject(project_name);
                         }} 
                         key={project_name}
                     >
-                        <p className=''>
-                            <p>
+                        <p className='ml-1'>
+                            <p className='text-xl pb-1'>
                                 {project_name}
                             </p>
                             <p className='text-xs font-normal	'>
                                 {ProjectDescription.get(project_name)!}
                             </p>
                         </p>
-                        
+                        {project_name === "College Scheduler" && pauseEffect && 
+                            <p className='absolute bottom-2 left-2 text-green-600 font-semibold text-xl live-status'>Live</p>
+                        } 
                         {selectedProject === project_name && ProjectContent && <ProjectContent key={project_name} />}
+                        
+
                     </div>
                     )}
             <button 

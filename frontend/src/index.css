@@ -263,18 +263,24 @@
   border-top-left-radius: 10rem;
 }
 
-#living-shapes-wrapper > div > p{
+#living-shapes-wrapper > div > p:not(.live-status){
   display: none;
 }
 
 
-#living-shapes-wrapper[data-roundness="0"] > div > p{
+#living-shapes-wrapper[data-roundness="0"] > div > p:not(.live-status){
   display:block;
   padding: 12px;
   padding-left: 4px;
   font-size: 1rem; /* 16px */
   line-height: 1.5rem; /* 24px */
   font-weight: 600;
+}
+#living-shapes-wrapper[data-roundness="0"] > div > p.live-status{
+  animation: blinkAnimation 3s infinite;
+}
+@keyframes blinkAnimation{
+  50% {opacity: 0;}
 }
 #living-shapes-wrapper[data-roundness="0"] {
   display: grid;

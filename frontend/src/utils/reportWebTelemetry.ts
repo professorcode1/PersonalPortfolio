@@ -1,10 +1,11 @@
 
 import axios from "axios";
 import { WebTelemetryEvent } from "./WebTelemetryTypes";
+import { URLBASE } from "./URLBase";
 
 async function ReportWebTelemetryEvent(event:WebTelemetryEvent){
     try {
-        axios.post("webTelemetry",event)
+        axios.post(URLBASE + "/webTelemetry",event)
     } catch (error) {
         console.error(error)
     }
