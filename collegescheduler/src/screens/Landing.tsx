@@ -3,8 +3,12 @@ import { URLBase } from "../utils/URLBase"
 import LoginImage from  "../assets/login_link_in_index.jpeg"
 import RegisterImage from "../assets/register_link_in_index.jpeg"
 import ViewScheduleImage from "../assets/viewSchedule_link_index.jpeg"
-import { useAppDispatch } from "../redux/main"
+import { useAppDispatch, useAppSelector } from "../redux/main"
 import { setScreen } from "../redux/screen"
+import { setScheduleId } from "../redux/SelectedSchedule"
+import { IUser } from "../utils/UserType"
+import axios from "axios"
+import { setWaiting } from "../redux/waiting"
 const LandingCard:React.FC<{
     img:string,
     title:string,
@@ -39,7 +43,27 @@ const LandingCard:React.FC<{
 }
 
 const Landing:React.FC<{}> = () =>{
-    const dispatcher = useAppDispatch()
+    const dispatcher = useAppDispatch();
+    const view_schedules = new URLSearchParams(window.location.search).get("view_schedules");
+    if( view_schedules === "true"){
+        window.history.pushState({}, document.title, "/collegeSchduler" );
+        (async ()=>{
+            try {
+                dispatcher(setWaiting(true));
+                const new_user:IUser = (await axios.get(URLBase + "/userDatabaseObject", {
+                    withCredentials:true
+                })).data;                
+                dispatcher(setWaiting(false));
+                dispatcher(setScreen("Schedule"));
+                dispatcher(setScheduleId(new_user._id));
+            } catch (error) {
+                dispatcher(setScreen("View Schedules"));
+                dispatcher(setWaiting(false));
+            }
+
+            
+        })()
+    }
     return (
         <div className="w-screen h-screen flex flex-col overflow-x-hidden">
             <div className="flex flex-col items-center justify-center mt-4 border-slate-800 border-b-2 pb-4 mx-2">

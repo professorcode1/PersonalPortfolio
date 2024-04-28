@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as React from "react";
 import { URLBase } from "../utils/URLBase";
-import { useAppDispatch } from "../redux/main";
+import { useAppDispatch, useAppSelector } from "../redux/main";
 import { setUser } from "../redux/User";
 import { setWaiting } from "../redux/waiting";
 import HomescreeBGImage from "../assets/homepage.jpg"
@@ -49,7 +49,7 @@ return (
 )
 }
 const Homescreen:React.FC<{}> = () => {
-    const dispatcher = useAppDispatch()
+    const dispatcher = useAppDispatch();
     React.useEffect(()=>{
         (async ()=>{
             try {
