@@ -45,19 +45,16 @@ async function CreateCourse(req:Request, res:Response){
 
 async function CourseAssetsNameList(req:Request, res:Response){
     try {
-        const prof_namse = await async_get_query(`
-            SELECT name FROM course_professor 
-            inner join professor 
-            on  course_professor.professor_id = professor.professor_id and 
-            course_id = ${req.params.courseId}
+        const prof_id = await async_get_query(`
+            SELECT professor_id FROM course_professor 
+            where course_id = ${college_scheduler_connection.escape(req.params.courseId)}
         `, college_scheduler_connection);
-        const group_names = await async_get_query(`
-            SELECT name FROM course_group 
-            inner join \`group\` 
-            on  course_group.group_id= \`group\`.group_id and 
-            course_id = ${req.params.courseId}
+        const group_ids = await async_get_query(`
+            SELECT group_id FROM course_group 
+            where course_id = ${college_scheduler_connection.escape(req.params.courseId)}
         `, college_scheduler_connection)
-        return res.send({prof_namse,group_names})
+        console.log()
+        return res.send({prof_id:prof_id.map((x:any) => x.professor_id),group_ids:group_ids.map((x:any)=> x.group_id)})
     } catch (error) {
         return res.status(500).send();
     }

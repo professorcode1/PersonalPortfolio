@@ -26,12 +26,10 @@ async function CreatePeriod(req:Request, res:Response){
         const periodsPerDay = req.body.periods_per_day;
         let ban_times = []
         for(let iter = 0 ; iter < numberOfDays * periodsPerDay ; iter++){
-            if(req.body["antiTimeSpecified" + iter] === "on"){
+            if(req.body["periodTaken" + iter] === "on"){
                 ban_times.push(iter);
             }
         }
-        const use_set_time = req.body.specifyTime && (!isNaN(req.body.timeSpeicifiedDay)) && (!isNaN(req.body.timeSpeicifiedPeriod)) && Number(req.body.periodFrequency) == 1;
-        // console.log(use_set_time, req.body.specifyTime ,!isNaN(req.body.timeSpeicifiedDay) ,!isNaN(req.body.timeSpeicifiedPeriod), );
         let period_Obj:any = new Object();
         period_Obj.name = req.body.periodName;
         period_Obj.course_id = req.body.courseId;
@@ -39,11 +37,13 @@ async function CreatePeriod(req:Request, res:Response){
         period_Obj.room_id = req.body.roomId;
         period_Obj.length = req.body.periodLength
         period_Obj.frequency = req.body.periodFrequency;
-        if(use_set_time){
+        if(req.body.specifyTime){
             period_Obj.set_time = periodsPerDay * (Number(req.body.timeSpeicifiedDay) - 1) + Number(req.body.timeSpeicifiedPeriod) - 1;
         }
         const period_id = (await async_push_query("INSERT INTO `period` SET ?", period_Obj, college_scheduler_connection)).insertId;
-        await insert_many_hlpr("period_ban_times", period_id, ban_times, college_scheduler_connection);
+        if(!req.body.specifyTime){
+            await insert_many_hlpr("period_ban_times", period_id, ban_times, college_scheduler_connection);
+        }
         await insert_many_hlpr("period_group", period_id, group_ids, college_scheduler_connection);
         return res.status(200).send();
     } catch (error) {

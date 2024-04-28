@@ -51,20 +51,29 @@ const CreatePeriod:React.FC<{
     periods_per_day,
     dismount_me
 }) => {
-    const {groups:intialGroups, professors, rooms} = useAppSelector(s => s.user!)
+    const {groups:intialGroups, professors, rooms} = useAppSelector(s => s.user!);
+    const courseSelected = useAppSelector(s => s.course);
     const [periodName, setperiodName] = React.useState("")
     const [unavailability, setUnavailability] = React.useState<IUnavailability>(Object.fromEntries(
-        new Array(days_per_week * periods_per_day).fill(null).map((x,i) => [`antiTimeSpecified${i}`, "off"])
+        new Array(days_per_week * periods_per_day).fill(null).map((x,i) => [`periodTaken${i}`, "off"])
     ));
     const [specifyTime, setspecifyTime] = React.useState(false);
     const [periodLength, setperiodLength] = React.useState(1);
     const [periodFrequency, setperiodFrequency] = React.useState(1);
     const [timeSpeicifiedDay, settimeSpeicifiedDay] = React.useState(1);
     const [timeSpeicifiedPeriod, settimeSpeicifiedPeriod] = React.useState(1);
-    const [profId, setprofId] = React.useState({value:professors[0]._id, label:professors[0].professorName});
-    const [roomId, setroomId] = React.useState({value:rooms[0]._id, label:rooms[0].roomName});
+    const ProfIdToNameMapping:{[key:string]:string} = Object.fromEntries(professors.map(p => [p._id, p.professorName]));
+    const RoomIdToNameMapping:{[key:string]:string} = Object.fromEntries(rooms.map(r => [r._id, r.roomName]))
+    const [roomId, setroomId] = React.useState<IUnavailability>(Object.fromEntries(
+        rooms.map((room,index) => [room._id, index === 0? "on" : "off"])
+    ));
+    const [profId, setprofId] = React.useState<IUnavailability>(Object.fromEntries(
+        courseSelected.professor_ids.map((id, index)=>[id, index === 0? "on" : "off"])
+    ));
     const dispatcher = useAppDispatch();
-    const courseId = useAppSelector(s => s.course)
+    const courseId = useAppSelector(s => s.course);
+    const [groups, setGroups] = React.useState<IUnavailability>(Object.fromEntries(courseSelected.group_ids.map(group_id => [`${group_id}`, "off"])));
+    const GroupIdToNameMapping:{[key:string]:string} = Object.fromEntries(intialGroups.map(group => [group._id, group.groupName]));
     const Submit= async () => {
         if(specifyTime){
             if(timeSpeicifiedDay < 1 || timeSpeicifiedDay > days_per_week){
@@ -80,7 +89,7 @@ const CreatePeriod:React.FC<{
         if(Object.values(groups).filter(x => x=== "on").length ===0){
             return alert("You didn't select any groups!");
         }
-        console.log(roomId, profId)
+
         await PostHelper(
             x => dispatcher(setWaiting(x)),
             x => dispatcher(setUser(x)),
@@ -89,12 +98,14 @@ const CreatePeriod:React.FC<{
                 days_per_week,
                 periods_per_day,
                 periodName,
-                courseId,
+                courseId:courseId.course_id,
                 periodLength,
                 periodFrequency,
                 specifyTime,
-                profId:profId.value,
-                roomId:roomId.value,
+                profId:Object.entries(profId).find(([id,val])=>val === "on")![0],
+                roomId:Object.entries(roomId).find(([id,val])=>val === "on")![0],
+                timeSpeicifiedDay,
+                timeSpeicifiedPeriod, 
                 ...unavailability,
                 ...groups,
                 
@@ -103,8 +114,7 @@ const CreatePeriod:React.FC<{
         dismount_me();
     }
 
-    const [groups, setGroups] = React.useState<IUnavailability>(Object.fromEntries(intialGroups.map(group => [`${group._id}`, "off"])));
-    const GroupIdToNameMapping:{[key:string]:string} = Object.fromEntries(intialGroups.map(group => [group._id, group.groupName]))
+
 
     return (
         <div className="w-1/2 border border-black rounded-lg p-2">
@@ -122,21 +132,19 @@ const CreatePeriod:React.FC<{
             </div>
             <div className="flex m-4">
                 <p className="mx-2 w-32">Professor</p>
-                <Select 
-                    className="w-48" 
-                    options={professors.map(prof => ({label:prof.professorName, value:profId})) as unknown as any}
-                    defaultValue={profId}
-                    onChange={x => setprofId(x!)}
-                />
+                <div className="w-2/3">
+
+                    <CouseAssetPicker slice_index={0} assetKeyStart="" asset={profId} asset_id_to_name_mapping={ProfIdToNameMapping} setAsset={setprofId} single_select={true} />
+                </div>
+
             </div>
             <div className="flex m-4">
                 <p className="mx-2 w-32">Room</p>
-                <Select 
-                    className="w-48" 
-                    options={rooms.map(room => ({label:room.roomName, value:roomId})) as unknown as any}
-                    defaultValue={roomId}
-                    onChange={x => setroomId(x!)}
-                />
+                <div className="w-2/3">
+
+                    <CouseAssetPicker slice_index={0} assetKeyStart="" asset={roomId} asset_id_to_name_mapping={RoomIdToNameMapping} setAsset={setroomId} single_select={true} />
+                </div>
+
             </div>
             <div className="flex m-4">
                 <p className="mx-2 w-32">Specify time</p>

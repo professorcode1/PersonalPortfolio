@@ -13,6 +13,7 @@ const SingleCourse:React.FC<{
     course:ICourse, 
 }> = (props) => {
     const dispatcher = useAppDispatch();
+    const {professors, groups} = useAppSelector(s => s.user!);
     const OnDelete = async () => {
         await GetHelper(
             x => dispatcher(setWaiting(x)),
@@ -20,20 +21,19 @@ const SingleCourse:React.FC<{
             "/deleteCourse/" + props.course._id
         );
     }
-    const [taughtTo, setTaughtTo] = React.useState("");
-    const [taugthBy, setTaughtBy] = React.useState("");
+    const [taughtTo, setTaughtTo] = React.useState<number[]>([]);
+    const [taugthBy, setTaughtBy] = React.useState<number[]>([]);
     React.useEffect(()=>{
         (async()=>{
             try {
-                const {prof_namse,group_names} = (await axios.get(
+                const {prof_id,group_ids}  = (await axios.get(
                     `${URLBase}/CourseAssets/${props.course._id}`, {
                     withCredentials:true
-                })).data;
-                setTaughtTo((group_names.map((x:any) => x.name) as string[]).join(", "));
-                setTaughtBy((prof_namse.map((x:any) => x.name) as string[]).join(", "));
+                })).data as {prof_id:number[], group_ids:number[]};
+                setTaughtBy(prof_id);
+                setTaughtTo(group_ids);
             } catch (error) {
-                setTaughtTo("(Some error occured)")
-                setTaughtBy("(Some error occured)")
+                alert("some error occured in fetching the data for course " + props.course.courseName )
             }
 
         })()
@@ -44,8 +44,8 @@ const SingleCourse:React.FC<{
             <p className="pl-1 pt-0">
                 {props.course.courseName}
             </p>
-            <p className="text-sm p-1 h-32 overflow-hidden text-ellipsis">Taught by:{taugthBy}</p>
-            <p className="text-sm p-1 h-16 overflow-hidden text-ellipsis">Taught to:{taughtTo}</p>
+            <p className="text-sm p-1 h-32 overflow-hidden text-ellipsis">Taught by:{taugthBy.map(id => professors.find(x => x._id === id)!).map(x=>x.professorName).join(", ")}</p>
+            <p className="text-sm p-1 h-16 overflow-hidden text-ellipsis">Taught to:{taughtTo.map(id => groups.find(x => x._id === id)!).map(x=>x.groupName).join(", ")}</p>
             <a 
                 className="absolute bottom-0 text-sm p-2 pl-1 text-blue-500 cursor-pointer"
                 onClick={OnDelete}
@@ -53,7 +53,11 @@ const SingleCourse:React.FC<{
             <button 
                 className="absolute bottom-0 right-0 pr-2 text-sm p-2 pl-1 text-blue-500 cursor-pointer"
                 onClick={()=>{
-                    dispatcher(setCourse(props.course._id));
+                    dispatcher(setCourse({
+                        course_id:props.course._id,
+                        professor_ids:taugthBy,
+                        group_ids:taughtTo
+                    }));
                     dispatcher(setScreen("Period"))
                 }}
             >
@@ -69,22 +73,31 @@ const CouseAssetPicker:React.FC<{
     setAsset:(a:IUnavailability)=>void,
     assetKeyStart:string,
     slice_index?:number
+    single_select?:boolean
 }> = ({
     asset,
     asset_id_to_name_mapping,
     setAsset,
     assetKeyStart,
-    slice_index
+    slice_index,
+    single_select
 }) => {
     if(slice_index === undefined) slice_index = 1;
     return (
-        <div className="flex overflow-scroll h-16 overflow-y-clip flex-none">
+        <div className="flex overflow-scroll h-16 overflow-y-clip flex-none w-full">
             {Object.entries(asset).map(([id, status])=>[id.slice(slice_index),status]).map(([id,status])=>[asset_id_to_name_mapping[id] as string, id,status]).map(([name,id, status])=>{
                 return (
                     <p 
                         className={" w-32 mx-2 p-2 w-full whitespace-nowrap border-2 rounded-lg cursor-pointer " + (status === "off" ? " border-red-400" : " border-green-400")} 
                         onClick={()=>{
-                            setAsset({...asset, [assetKeyStart + id]: status === "off"?"on":"off"})
+                            if(single_select===true){
+                                setAsset({
+                                    ...Object.fromEntries(Object.keys(asset).map(a => [a, "off"])),
+                                    [assetKeyStart + id]:"on"
+                                })
+                            }else{
+                                setAsset({...asset, [assetKeyStart + id]: status === "off"?"on":"off"})
+                            }
                         }}
                     >
                         {name}

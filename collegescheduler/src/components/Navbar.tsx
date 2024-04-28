@@ -44,7 +44,7 @@ const Navbar:React.FC<{}> = () => {
                         if(number_of_periods === 0){
                             return alert("please make some periods first")
                         }
-                        window.location.href = "http://localhost:8000/collegeSchduler/generateSchedule"
+                        window.location.href = window.location.origin + "/collegeSchduler/generateSchedule"
                     }}
                 >
                     Genereate Schedule

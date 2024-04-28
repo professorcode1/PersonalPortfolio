@@ -46,7 +46,7 @@ const ResourceScreen:React.FC<{
             return courses.map(course => <SingleCourse course={course} key={"course" + course._id} />)
         }
         else{
-            return periods.filter(period => period.parentCourse === selected_course).map(period => <SinglePeriod period={period} key={"period" + period._id} />)
+            return periods.filter(period => period.parentCourse === selected_course.course_id).map(period => <SinglePeriod period={period} key={"period" + period._id} />)
         }
     })();
     return (
