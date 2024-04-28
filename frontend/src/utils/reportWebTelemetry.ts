@@ -13,7 +13,7 @@ async function ReportWebTelemetryEvent(event:WebTelemetryEvent){
 
 async function getCurrentTimeFromInterntionalServer():Promise<string>{
     try {
-        return ((await axios.get("http://worldtimeapi.org/api/timezone/Asia/Kolkata")).data.datetime as string).split('.')[0]    } catch (error) {
+        return ((await axios.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata")).data.datetime as string).split('.')[0]    } catch (error) {
         console.error(error)
         return ""
     }
