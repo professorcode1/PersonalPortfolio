@@ -46,6 +46,7 @@ app.get("/", (req, res) => {
 });
 app.get("/webTelemetry/getNewToken", main_1.GetNewTokenCallback);
 app.post("/webTelemetry", main_1.PostWebTelemetryCallback);
+app.post("/viewWebTelemetry", main_1.ViewWebTelemetry);
 //
 app.get("/collegeSchduler", (req, res) => {
     res.sendFile(path_1.default.join(__dirname, 'build', 'college index.html'));

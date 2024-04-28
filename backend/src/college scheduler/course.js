@@ -68,7 +68,6 @@ function CourseAssetsNameList(req, res) {
             SELECT group_id FROM course_group 
             where course_id = ${connections_1.college_scheduler_connection.escape(req.params.courseId)}
         `, connections_1.college_scheduler_connection);
-            console.log();
             return res.send({ prof_id: prof_id.map((x) => x.professor_id), group_ids: group_ids.map((x) => x.group_id) });
         }
         catch (error) {

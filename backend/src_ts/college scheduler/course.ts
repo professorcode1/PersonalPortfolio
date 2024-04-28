@@ -53,7 +53,6 @@ async function CourseAssetsNameList(req:Request, res:Response){
             SELECT group_id FROM course_group 
             where course_id = ${college_scheduler_connection.escape(req.params.courseId)}
         `, college_scheduler_connection)
-        console.log()
         return res.send({prof_id:prof_id.map((x:any) => x.professor_id),group_ids:group_ids.map((x:any)=> x.group_id)})
     } catch (error) {
         return res.status(500).send();

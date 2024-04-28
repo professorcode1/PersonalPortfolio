@@ -3,7 +3,7 @@ import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import {  college_scheduler_connection, web_telemetry_connection } from "./src/connections";
-import { GetNewTokenCallback, PostWebTelemetryCallback } from "./src/webTelemetry/main";
+import { GetNewTokenCallback, PostWebTelemetryCallback, ViewWebTelemetry } from "./src/webTelemetry/main";
 import { Authenticate, LoginRoute, RegisterRoute } from "./src/college scheduler/auth";
 import { extend_id_to_24_char, groupBy } from "./src/college scheduler/utils";
 import { async_get_query } from "./src/utils/db";
@@ -14,6 +14,8 @@ import { CreateRoom, DeletRoom } from "./src/college scheduler/room";
 import { CourseAssetsNameList, CreateCourse, DeleteCourse } from "./src/college scheduler/course";
 import { CreatePeriod, DeletePeriod } from "./src/college scheduler/Period";
 import { GetSchedule, GetUserObject, PostSchedule } from "./src/college scheduler/Schedule";
+import bcrypt from "bcrypt"
+
 // @ts-ignore
 const cookieparse = require("cookie-parser")
 
@@ -36,13 +38,12 @@ app.use('/static', express.static(__dirname + '/build/static'));
 app.use(cookieparse());
 
 
-
 app.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname,'build', 'index.html'))
 });
 app.get("/webTelemetry/getNewToken", GetNewTokenCallback);
 app.post("/webTelemetry", PostWebTelemetryCallback);
-
+app.post("/viewWebTelemetry",ViewWebTelemetry )
 //
 app.get("/collegeSchduler", (req, res)=>{
     res.sendFile(path.join(__dirname,'build', 'college index.html'));
