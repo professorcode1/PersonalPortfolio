@@ -5,7 +5,7 @@ import { insert_many_hlpr } from "./utils";
 
 const DeletGroup = async (req:Request, res:Response) => {
     try {
-        await async_get_query("DELETE FROM `group` WHERE group_id = " + req.params.groupId, college_scheduler_connection);
+        await async_get_query("DELETE FROM `group` WHERE group_id = " + college_scheduler_connection.escape(req.params.groupId), college_scheduler_connection);
         return res.status(200).send();
     } catch (error) {
         return res.status(500).send();

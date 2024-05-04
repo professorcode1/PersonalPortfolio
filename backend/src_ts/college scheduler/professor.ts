@@ -5,7 +5,7 @@ import { insert_many_hlpr } from "./utils";
 
 const DeleteProfessor = async (req:Request, res:Response) => {
     try {
-        await async_get_query("DELETE FROM professor WHERE professor_id = " + req.params.professorId, college_scheduler_connection);
+        await async_get_query("DELETE FROM professor WHERE professor_id = " + college_scheduler_connection.escape(req.params.professorId), college_scheduler_connection);
         return res.status(200).send();
     } catch (error) {
         return res.status(500).send();

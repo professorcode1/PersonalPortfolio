@@ -10,7 +10,7 @@ async function GetUserObject(req:Request,res:Response){
         professors_data, professor_ban_times, 
         courses_data, 
         period_data, period_group, period_ban_times] = await async_get_query(
-            `CALL entire_university_information(${((req as any).user).university_id})`, 
+            `CALL entire_university_information(${college_scheduler_connection.escape(((req as any).user).university_id)})`, 
         college_scheduler_connection);
 
     const room_ban_times_grouped = groupBy(room_ban_times, x => x.room_id);
@@ -81,8 +81,8 @@ async function PostSchedule(req:Request, res:Response){
             let color = coloring[period_Info];
             sql_string_r += `(${period_id}, ${length_value}, ${frequency_value}, ${color}),`;
         }
-        await async_get_query(`CALL delete_university_schedule(${(req as any).user.university_id})`, college_scheduler_connection);
-        await async_get_query("INSERT INTO period_coloring VALUES " + sql_string_r.substring(0, sql_string_r.length - 1), college_scheduler_connection);
+        await async_get_query(`CALL delete_university_schedule(${college_scheduler_connection.escape((req as any).user.university_id)})`, college_scheduler_connection);
+        await async_get_query("INSERT INTO period_coloring VALUES " + college_scheduler_connection.escape(sql_string_r.substring(0, sql_string_r.length - 1)), college_scheduler_connection);
     }catch(err){
         console.log(err);
         return res.send(err);
@@ -91,13 +91,13 @@ async function PostSchedule(req:Request, res:Response){
 }
 async function GetSchedule(req:Request, res:Response){
     try {
-        const [prof_data, prof_views, group_data, group_views, ] = await async_get_query(`CALL view_schedule(${req.params.userId})`, college_scheduler_connection);
+        const [prof_data, prof_views, group_data, group_views, ] = await async_get_query(`CALL view_schedule(${college_scheduler_connection.escape(req.params.userId)})`, college_scheduler_connection);
         const prof_views_grouped = groupBy(prof_views, x => x.professor_id);
         const group_views_grouped = groupBy(group_views, x => x.group_id);
         const {
             numberOfDays,
             periodsPerDay
-        } = (await async_get_query(`SELECT days_per_week AS numberOfDays, periods_per_day AS periodsPerDay FROM university WHERE university_id = ${req.params.userId}`, college_scheduler_connection))[0];
+        } = (await async_get_query(`SELECT days_per_week AS numberOfDays, periods_per_day AS periodsPerDay FROM university WHERE university_id = ${college_scheduler_connection.escape(req.params.userId)}`, college_scheduler_connection))[0];
         let sendTable = new Map();
         for(let prof of prof_data){
             let table = new Array(numberOfDays);

@@ -6,6 +6,7 @@ import { insert_many_hlpr } from "./utils";
 async function DeletePeriod(req:Request, res:Response) {
     
     try {
+        //no need for protection against sql injection because the regex itself would remove all non digits
         await async_get_query(`DELETE FROM \`period\` WHERE period_id = '${req.params.periodId.replace(/^\D+/g, '')}'`, college_scheduler_connection);
         return res.status(200).send();
     } catch (error) {

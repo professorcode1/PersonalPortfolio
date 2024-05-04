@@ -5,7 +5,7 @@ import { insert_many_hlpr } from "./utils";
 
 const DeletRoom = async (req:Request, res:Response) => {
     try {
-        await async_get_query("DELETE FROM room WHERE room_id = " + req.params.roomId, college_scheduler_connection);
+        await async_get_query("DELETE FROM room WHERE room_id = " + college_scheduler_connection.escape(req.params.roomId), college_scheduler_connection);
         return res.status(200).send();
     } catch (error) {
         console.error(error)
