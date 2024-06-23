@@ -1,1 +1,1 @@
-export const URLBASE = "//localhost:7000"
+export const URLBASE = ""
