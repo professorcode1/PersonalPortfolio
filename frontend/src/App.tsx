@@ -5,9 +5,10 @@ import { NavBar } from './components/NavBar';
 import { ContactMe } from './screens/ContactMe';
 import axios from 'axios';
 import { GetSessionToken, SetSessionToken } from './utils/Cookie';
-import { ReportWebTelemetryEvent, getCurrentTimeFromInterntionalServer } from './utils/reportWebTelemetry';
+import { ReportWebTelemetryEvent, SetItbounceFalse, getCurrentTimeFromInterntionalServer, getIPAddress } from './utils/reportWebTelemetry';
 import { URLBASE } from './utils/URLBase';
 import { WebTelemetryView } from './screens/WebTelemetry';
+import { WebTelemetryEvent } from './utils/WebTelemetryTypes';
 
 
 function App() {
@@ -27,11 +28,17 @@ function App() {
           SetSessionToken(new_token);
           potential_token = new_token;
         }
-        await ReportWebTelemetryEvent({
+        const ipaddr = await getIPAddress();
+        const web_telemetry_event:WebTelemetryEvent = {
           type:"Pageview",
           sessionId:potential_token!,
-          time:await getCurrentTimeFromInterntionalServer()
-        });
+          time:await getCurrentTimeFromInterntionalServer(),
+          ipaddr
+        };
+        const pageview_event = await ReportWebTelemetryEvent(web_telemetry_event);
+        setTimeout(async ()=>{
+          console.log(await SetItbounceFalse(web_telemetry_event))
+        }, 5000)
       } catch (error) {
         console.log(error)
       }

@@ -10,7 +10,8 @@ type EWebTelemetryEventType = typeof WEB_TELEMETRY_EVENTS[number];
 interface WebTelemetryEventBase {
     type:EWebTelemetryEventType,
     time:string
-    sessionId:string
+    sessionId:string,
+    ipaddr:string|null
 }
 interface WebTelemetryLinkClickEvent extends WebTelemetryEventBase{
     type:"Link Clicked"

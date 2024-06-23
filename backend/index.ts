@@ -4,7 +4,7 @@ import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import {   web_telemetry_connection } from "./src/connections";
-import { GetNewTokenCallback, PostWebTelemetryCallback, ViewWebTelemetry } from "./src/webTelemetry/main";
+import { GetNewTokenCallback, PostIsBounceFalseCallback, PostWebTelemetryCallback, ViewWebTelemetry } from "./src/webTelemetry/main";
 
 
 // @ts-ignore
@@ -34,6 +34,7 @@ app.get("/", (req, res)=>{
 });
 app.get("/webTelemetry/getNewToken", GetNewTokenCallback);
 app.post("/webTelemetry", PostWebTelemetryCallback);
+app.post("/webTelemetry/setbouncefalse", PostIsBounceFalseCallback)
 app.post("/viewWebTelemetry",ViewWebTelemetry )
 //
 

@@ -22,7 +22,8 @@ const WebTelemetryAnchor:React.FC<{
                     type:"Link Clicked",
                     time: await getCurrentTimeFromInterntionalServer(),
                     href,
-                    sessionId:potentialToken
+                    sessionId:potentialToken,
+                    ipaddr:null
                 });
             })()
         }

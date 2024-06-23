@@ -19,12 +19,31 @@ const GetNewTokenCallback  = async (req:Request, res:Response)=>{
 }
 
 const PostWebTelemetryCallback = async (req:Request, res:Response)=>{
-    res.send();
+    
     try {
-        await async_push_query("INSERT INTO Pageview SET ?", req.body, web_telemetry_connection);
+        return res.send(await async_push_query("INSERT INTO Pageview SET ?", req.body, web_telemetry_connection));
             
     } catch (error) {
         console.error(error);
+        return res.status(501).send(error);
+    }
+
+};
+const PostIsBounceFalseCallback = async (req:Request, res:Response)=>{
+    
+    try {
+        return res.send(await async_get_query(`
+            Update Pageview 
+            SET isbounce = 0 
+            where 
+                sessionId =  ${web_telemetry_connection.escape(req.body.sessionId)} and
+                time =  ${web_telemetry_connection.escape(req.body.time)}
+                and type = 'Pageview'
+            `, web_telemetry_connection));
+
+    } catch (error) {
+        console.error(error);
+        return res.status(501).send(error);
     }
 
 };
@@ -52,5 +71,6 @@ const ViewWebTelemetry = async (req:Request, res:Response) => {
 export {
     GetNewTokenCallback,
     PostWebTelemetryCallback,
-    ViewWebTelemetry
+    ViewWebTelemetry,
+    PostIsBounceFalseCallback
 }

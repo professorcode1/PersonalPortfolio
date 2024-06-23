@@ -14,7 +14,8 @@ function WebTelemetryMountingEventHOC(
                     type:"Component Mounted",
                     sessionId:sessionId,
                     time:await getCurrentTimeFromInterntionalServer(),
-                    component_name:name
+                    component_name:name,
+                    ipaddr:null
                 });
                 console.log("moutning from wrapper")
             })();
@@ -27,7 +28,8 @@ function WebTelemetryMountingEventHOC(
                         type:"Component Unmounted",
                         sessionId:sessionId,
                         time:await getCurrentTimeFromInterntionalServer(),
-                        component_name:name
+                        component_name:name,
+                        ipaddr:null
                     }); 
                     console.log("unmoutning from wrapper")
 

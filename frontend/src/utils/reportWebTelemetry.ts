@@ -5,9 +5,19 @@ import { URLBASE } from "./URLBase";
 
 async function ReportWebTelemetryEvent(event:WebTelemetryEvent){
     try {
-        axios.post(URLBASE + "/webTelemetry",event)
+        return (axios.post(URLBASE + "/webTelemetry",event))
     } catch (error) {
         console.error(error)
+        throw error;
+    }
+}
+
+async function SetItbounceFalse(event:WebTelemetryEvent) {
+    try {
+        return axios.post(URLBASE + "/webTelemetry/setbouncefalse", event)
+    } catch (error) {
+        console.error(error);
+        return null;
     }
 }
 
@@ -19,7 +29,19 @@ async function getCurrentTimeFromInterntionalServer():Promise<string>{
     }
 }
 
+async function  getIPAddress():Promise<string|null> {
+    try {
+        const response = await fetch('https://geolocation-db.com/json/');
+        const data = await response.json();
+        return data.IPv4         
+    } catch (error) {
+        return null;
+    }
+}
+
 export {
     getCurrentTimeFromInterntionalServer,
-    ReportWebTelemetryEvent
+    ReportWebTelemetryEvent,
+    getIPAddress,
+    SetItbounceFalse
 }
