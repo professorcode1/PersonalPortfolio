@@ -1,7 +1,7 @@
 import React from 'react';
 import { RoughNotation } from 'react-rough-notation';
 import {useAutoAnimate} from '@formkit/auto-animate/react'
-import MyImage from "../assets/Me with Cat Cropped.jpg"
+import MyImage from "../assets/Me with Cat low rez.jpg"
 import { WebTelemetryAnchor } from '../components/WebTelAnchor';
 
 const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {

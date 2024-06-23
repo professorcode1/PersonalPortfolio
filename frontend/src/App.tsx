@@ -36,8 +36,9 @@ function App() {
           ipaddr
         };
         const pageview_event = await ReportWebTelemetryEvent(web_telemetry_event);
+        console.log("pageview_event", pageview_event)
         setTimeout(async ()=>{
-          console.log(await SetItbounceFalse(web_telemetry_event))
+          console.log("is bounce event",await SetItbounceFalse(web_telemetry_event))
         }, 5000)
       } catch (error) {
         console.log(error)
