@@ -3,14 +3,25 @@ import TypeIt from "typeit-react";
 import FlightSimulatorGif from "../assets/flight simulator.webp"
 import { WebTelemetryAnchor } from './WebTelAnchor';
 import { ProjectBaseTemplate } from './ProjectBaseTemplate';
+import { RoughNotation } from 'react-rough-notation';
 
 const FlightSimulatorDescription:React.FC<{}> = () => {
     return (
         <>
-            <TypeIt options={{speed:0.01}}>
+
                 <ol className='text-base m-4 list-decimal'>
                     <li className='m-4'>
-                    Created Flight Simulator in C++ using OpenGL where the player pilots over procedurally generated terrain. 
+                    Created
+                    <RoughNotation type='underline' show={true} > 
+                &nbsp; Flight Simulator &nbsp; 
+                </RoughNotation> 
+                    
+                     in C++ using 
+                     
+                     <RoughNotation type='underline' show={true} > 
+                &nbsp; OpenGL  &nbsp; 
+                </RoughNotation> 
+                      where the player pilots over procedurally generated terrain. 
                     </li>
                     <li className='m-4'>
                         Implemented Perlin noise using compute shaders to create the terrain as well as implemented LOD and infinite scrolling. 
@@ -19,7 +30,7 @@ const FlightSimulatorDescription:React.FC<{}> = () => {
                         The cloud meshes are displaced using flow fields and it uses a trivial lighting model of ambient light hitting all meshes.                         
                     </li>
                 </ol>
-            </TypeIt>
+
         </>
     )
 }

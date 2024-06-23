@@ -3,23 +3,36 @@ import TypeIt from 'typeit-react';
 import { WebTelemetryAnchor } from './WebTelAnchor';
 import CollegeScedulerGif from "../assets/collegetimetableschedulerflow.webp";
 import { ProjectBaseTemplate } from './ProjectBaseTemplate';
+import { RoughNotation } from 'react-rough-notation';
 
 const CollegeSchedulerDescription:React.FC<{}> = () => {
   return (
-    <TypeIt options={{speed:0.01}}>
     <ol className='text-base m-4 list-decimal'>
         <li className='m-4'>
           Created a web application for my university as my Software Engineering 
           course project that allows a university to input their scheduling constraints 
-          and get a schedule as a result.
+          and 
+
+<p className='whitespace-nowrap	'>
+
+          <RoughNotation type='underline' show={true} > 
+              &nbsp; generate a schedule &nbsp; 
+            </RoughNotation>
+</p>
+          
+           
         </li>
         <li className='m-4'>
           The problem of scheduling translates to the NP hard problem of graph coloring 
           which I solved by implementing 2 meta heuristic algorithms: 
-          <b>Ant Colony Optimization and Genetic Algorithm.</b>
+          
+          <p className='whitespace-nowrap	'>
+            <RoughNotation type='underline' show={true} > 
+              &nbsp; Ant Colony Optimization and Genetic Algorithm. 
+            </RoughNotation> 
+          </p>
         </li>
     </ol>
-    </TypeIt>
   )
 }
 

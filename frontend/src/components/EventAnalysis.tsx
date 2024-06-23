@@ -3,10 +3,10 @@ import TypeIt from "typeit-react";
 import React from 'react';
 import { WebTelemetryAnchor } from "./WebTelAnchor";
 import { ProjectBaseTemplate } from "./ProjectBaseTemplate";
+import { RoughNotation } from "react-rough-notation";
 
 const EventAnalysisDescription:React.FC<{}> = () => {
     return (
-        <TypeIt options={{speed:0.01}}>
         <ol className='text-base m-4 list-decimal'>
             <li className='m-4'>
                 Open Sourced the first library that contains both &nbsp;
@@ -26,8 +26,17 @@ const EventAnalysisDescription:React.FC<{}> = () => {
                     CoinCalc
                 </a>
                 &nbsp;
-                 in R. This library is 180 times faster than 
-                CoinCalc on CPU and 7200 times faster on GPU. 
+                 in R. This library is 
+                 
+                 <RoughNotation type='underline' show={true} > 
+              &nbsp; 180 times faster &nbsp; 
+            </RoughNotation> 
+                  than 
+                CoinCalc on CPU and 
+                <RoughNotation type='underline' show={true} > 
+              &nbsp; 7200 times faster  &nbsp; 
+            </RoughNotation> 
+                on GPU. 
             </li>
             <li className='m-4'>
                 The library was downloaded &nbsp;
@@ -37,7 +46,6 @@ const EventAnalysisDescription:React.FC<{}> = () => {
                 &nbsp; in the first 48 hours of its release.
             </li>
             </ol>
-        </TypeIt>
     )
 }
 

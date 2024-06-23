@@ -1,13 +1,22 @@
 import React from 'react';
 import TypeIt from 'typeit-react';
 import { ProjectBaseTemplate } from './ProjectBaseTemplate';
+import { RoughNotation } from 'react-rough-notation';
 
 const PowerBotDescription:React.FC<{}> = () => {
     return (
-        <TypeIt options={{speed:0.01}}>
         <ol className='text-base m-4 list-decimal'>
             <li className='m-4'>
-                Used Selenium to create an API layer on top of PowerBI service to allow programmatic control over the Power BI GUI.
+                Used 
+                <RoughNotation type='underline' show={true} > 
+                &nbsp; Selenium  &nbsp; 
+                </RoughNotation> 
+                
+                 to create a
+                 
+                 <RoughNotation type='underline' show={true} > 
+                &nbsp;  GUI Automation API layer &nbsp; 
+                </RoughNotation>  on top of PowerBI service allowing for programmatic control over the Power BI GUI.
             </li>
             <li className='m-4'>
                 The tool is used to streamline and automate creation and updation of reports following rigorous UI/UX guidelines.
@@ -19,7 +28,6 @@ const PowerBotDescription:React.FC<{}> = () => {
                 The tool extracts the state of the report using DOM and changes it using Action Chains.  
             </li>
         </ol>
-    </TypeIt>
     );
 }
 

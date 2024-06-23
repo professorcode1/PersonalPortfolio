@@ -3,18 +3,27 @@ import TypeIt from 'typeit-react';
 import IntelHackPlot from "../assets/Intel Hack Plot.png"
 import { WebTelemetryAnchor } from './WebTelAnchor';
 import { ProjectBaseTemplate } from './ProjectBaseTemplate';
+import { RoughNotation } from 'react-rough-notation';
 
 
 const IntelHackDescription:React.FC<{}> = () => {
     return (
-        <TypeIt options={{speed:0.01}}>
         <ol className='text-base m-4 list-decimal'>
             <li className='m-4'>
-                GPU accelerated a Monte Carlo sampling algorithm such that it can predict 
-                stocks for the next month in under 1 minute.
+                GPU accelerated a
+
+                <RoughNotation type='underline' show={true} > 
+                &nbsp; Monte Carlo sampling algorithm &nbsp; 
+                </RoughNotation>
+                 such that it can
+                 
+                 <RoughNotation type='underline' show={true} > 
+                &nbsp; predict 
+                stocks&nbsp; 
+                </RoughNotation> 
+                 for the next month in under 1 minute.
             </li>
         </ol>
-        </TypeIt>
     )
 }
 const IntelButton:React.FC<{}> = () => {

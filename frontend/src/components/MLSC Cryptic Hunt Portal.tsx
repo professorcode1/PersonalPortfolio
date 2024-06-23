@@ -9,6 +9,7 @@ import MLSC_Question_Page from '../assets/MLSC Question Page.png'
 import MLSC_Leaderboard_Page from '../assets/MLSC Leaderboard Page.png'
 import { WebTelemetryAnchor } from './WebTelAnchor';
 import { ProjectBaseTemplate } from './ProjectBaseTemplate';
+import { RoughNotation } from 'react-rough-notation';
 
 const MLSCHuntPortalImages:React.FC<{}> = () => {
   return (
@@ -43,16 +44,19 @@ const MLSCHuntPortalImages:React.FC<{}> = () => {
 
 const MLSCHuntDescription:React.FC<{}> = () => {
   return (
-    <TypeIt options={{speed:0.01}}>
     <ol className='text-base m-4 list-decimal'>
         <li className='m-4'>
-            Engineered, programmed, and launched a portal for an Online Cryptic Hunt 
+            Engineered, programmed, and launched a portal for an 
+            <RoughNotation type='underline' show={true} > 
+                &nbsp; Online Cryptic Hunt &nbsp; 
+                </RoughNotation>
+            
+            
             in which 130+ teams participated and 12,000+ answers were submitted.
 
         </li>
 
     </ol>
-    </TypeIt>
   )
 }
 
