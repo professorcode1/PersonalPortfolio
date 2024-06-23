@@ -6,7 +6,7 @@ import { MLSCHuntPortal } from '../components/MLSC Cryptic Hunt Portal';
 import { IntelHackathon } from '../components/Intel Hackathon';
 import { BlueYonderHackathon } from '../components/Blue Yonder Hackathon';
 import { PowerBot } from '../components/PowerBot';
-import GmailLogo from "../assets/gmail.png"
+import GmailLogo from "../assets/gmail.jpg"
 import LinkedinLogo from "../assets/LinkedIn_icon.png"
 import InstagramLogo from "../assets/instagram logo.png"
 import { WebTelemetryAnchor } from '../components/WebTelAnchor';

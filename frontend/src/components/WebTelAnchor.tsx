@@ -34,7 +34,7 @@ const WebTelemetryAnchor:React.FC<{
         }
 
     }
-    return <a onClick={OnLinkClick} className={className}> {children}</a>
+    return <a onClick={OnLinkClick} className={className + " cursor-pointer "} > {children}</a>
 }
 
 export {WebTelemetryAnchor}

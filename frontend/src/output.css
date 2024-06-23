@@ -619,6 +619,10 @@ html{
   display: table;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -629,6 +633,10 @@ html{
 
 .h-4\/5 {
   height: 80%;
+}
+
+.h-5\/6 {
+  height: 83.333333%;
 }
 
 .h-8 {
@@ -647,8 +655,16 @@ html{
   height: 100vh;
 }
 
-.h-1\/2 {
-  height: 50%;
+.h-\[90\%\] {
+  height: 90%;
+}
+
+.h-\[95\%\] {
+  height: 95%;
+}
+
+.h-3\/4 {
+  height: 75%;
 }
 
 .w-12 {
@@ -679,6 +695,10 @@ html{
   width: 80%;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .w-96 {
   width: 24rem;
 }
@@ -689,6 +709,22 @@ html{
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-\[95\%\] {
+  width: 95%;
+}
+
+.w-\[45\%\] {
+  width: 45%;
+}
+
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .cursor-pointer {
@@ -705,6 +741,10 @@ html{
 
 .flex-col {
   flex-direction: column;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-end {
@@ -749,10 +789,6 @@ html{
 
 .whitespace-nowrap {
   white-space: nowrap;
-}
-
-.rounded-full {
-  border-radius: 9999px;
 }
 
 .rounded-lg {

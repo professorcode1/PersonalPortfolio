@@ -8,66 +8,73 @@ import MLSC_Register_Page from '../assets/MLSC Register Page.png'
 import MLSC_Question_Page from '../assets/MLSC Question Page.png'
 import MLSC_Leaderboard_Page from '../assets/MLSC Leaderboard Page.png'
 import { WebTelemetryAnchor } from './WebTelAnchor';
-const MLSCHuntPortal:React.FC<{
+import { ProjectBaseTemplate } from './ProjectBaseTemplate';
 
-}> = () => {
-    return (
-        <div className='h-screen flex items-center justify-center font-mono'>
-            <div className='w-3/5 h-4/5 bg-white relative  items-center overflow-y-scroll'>
-                <p className='mt-2 ml-2 text-3xl font-bold pl-6	'>MLSC Cryptic Hunt Portal</p>
+const MLSCHuntPortalImages:React.FC<{}> = () => {
+  return (
+    <Splide className='border border-black w-[45%]' > 
+    <SplideSlide>
+      <img 
+        src={MLSC_Landing_Page}
+        className='w-full'
+      />
+    </SplideSlide>
+    <SplideSlide>
+      <img 
+        src={MLSC_Register_Page}
+        className='w-full'
+      />
+    </SplideSlide>
+    <SplideSlide>
+      <img 
+        src={MLSC_Question_Page}
+        className='w-full'
+      />
+      </SplideSlide>
+      <SplideSlide>
+        <img 
+          src={MLSC_Leaderboard_Page}
+          className='w-full'
+        />
+      </SplideSlide>
+  </Splide>
+  )
+}
 
-                  <div className='w-full flex flex-col items-center mt-4 p-2 '>
-                    <Splide className='border border-black w-full' > 
-                      <SplideSlide>
-                        <img 
-                          src={MLSC_Landing_Page}
-                          className='w-full'
-                        />
-                      </SplideSlide>
-                      <SplideSlide>
-                        <img 
-                          src={MLSC_Register_Page}
-                          className='w-full'
-                        />
-                      </SplideSlide>
-                      <SplideSlide>
-                        <img 
-                          src={MLSC_Question_Page}
-                          className='w-full'
-                        />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img 
-                            src={MLSC_Leaderboard_Page}
-                            className='w-full'
-                          />
-                        </SplideSlide>
-                    </Splide>
+const MLSCHuntDescription:React.FC<{}> = () => {
+  return (
+    <TypeIt options={{speed:0.01}}>
+    <ol className='text-base m-4 list-decimal'>
+        <li className='m-4'>
+            Engineered, programmed, and launched a portal for an Online Cryptic Hunt 
+            in which 130+ teams participated and 12,000+ answers were submitted.
 
-                    <TypeIt options={{speed:0.01}}>
-                    <ol className='text-base m-4 list-decimal'>
-                        <li className='m-4'>
-                            Engineered, programmed, and launched a portal for an Online Cryptic Hunt 
-                            in which 130+ teams participated and 12,000+ answers were submitted.
+        </li>
 
-                        </li>
+    </ol>
+    </TypeIt>
+  )
+}
 
-                    </ol>
-                    </TypeIt>
-                </div>
+const MLSCHuntButton:React.FC<{}> = () => {
+  return (
+    <WebTelemetryAnchor 
+      className="m-2 p-2 rounded-lg border border-black w-24 text-center"
+      href="https://github.com/professorcode1/MSCProject"
+    >
+      Github
+    </WebTelemetryAnchor>
+  )
+}
 
-                <div className="w-full flex justify-center text-base ">
-                    <WebTelemetryAnchor 
-                        className="m-2 p-2 rounded-lg border border-black w-24 text-center"
-                        href="https://github.com/professorcode1/MSCProject"
-                    >
-                        Github
-                    </WebTelemetryAnchor>
+const MLSCHuntPortal:React.FC<{}> = () => {
+  return <ProjectBaseTemplate
+    name='MLSC Cryptic Hunt Portal'
+    asset={<MLSCHuntPortalImages/>}
+    description={<MLSCHuntDescription />}
+    buttons={<MLSCHuntButton />}
+   />
 
-                </div>
-            </div>
-        </div>
-    )
 }
 
 export {MLSCHuntPortal}
