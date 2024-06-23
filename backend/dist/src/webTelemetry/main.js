@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ViewWebTelemetry = exports.PostWebTelemetryCallback = exports.GetNewTokenCallback = void 0;
+exports.PostIsBounceFalseCallback = exports.ViewWebTelemetry = exports.PostWebTelemetryCallback = exports.GetNewTokenCallback = void 0;
 const getTimeFromServer_1 = require("../utils/getTimeFromServer");
 const uuid_1 = require("uuid");
 const connections_1 = require("../connections");
@@ -34,15 +34,32 @@ const GetNewTokenCallback = (req, res) => __awaiter(void 0, void 0, void 0, func
 });
 exports.GetNewTokenCallback = GetNewTokenCallback;
 const PostWebTelemetryCallback = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send();
     try {
-        yield (0, db_1.async_push_query)("INSERT INTO Pageview SET ?", req.body, connections_1.web_telemetry_connection);
+        return res.send(yield (0, db_1.async_push_query)("INSERT INTO Pageview SET ?", req.body, connections_1.web_telemetry_connection));
     }
     catch (error) {
         console.error(error);
+        return res.status(501).send(error);
     }
 });
 exports.PostWebTelemetryCallback = PostWebTelemetryCallback;
+const PostIsBounceFalseCallback = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return res.send(yield (0, db_1.async_get_query)(`
+            Update Pageview 
+            SET isbounce = 0 
+            where 
+                sessionId =  ${connections_1.web_telemetry_connection.escape(req.body.sessionId)} and
+                time =  ${connections_1.web_telemetry_connection.escape(req.body.time)}
+                and type = 'Pageview'
+            `, connections_1.web_telemetry_connection));
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(501).send(error);
+    }
+});
+exports.PostIsBounceFalseCallback = PostIsBounceFalseCallback;
 const ViewWebTelemetry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!bcrypt_1.default.compareSync(req.body.password, process.env.WebTelemetryPassword)) {
         return res.status(401).send();

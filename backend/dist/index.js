@@ -14,12 +14,12 @@ const main_1 = require("./src/webTelemetry/main");
 const cookieparse = require("cookie-parser");
 connections_1.web_telemetry_connection.connect();
 const app = (0, express_1.default)();
-// var cors = require('cors');
-// app.use(cors({
-//     credentials: true,
-//     origin: "http://localhost:3000",
-//     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
-// }));
+var cors = require('cors');
+app.use(cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+}));
 app.use(express_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use('/static', express_1.default.static(path_1.default.join((0, configDotEnv_1.get_build_path)(), 'static')));
@@ -29,6 +29,7 @@ app.get("/", (req, res) => {
 });
 app.get("/webTelemetry/getNewToken", main_1.GetNewTokenCallback);
 app.post("/webTelemetry", main_1.PostWebTelemetryCallback);
+app.post("/webTelemetry/setbouncefalse", main_1.PostIsBounceFalseCallback);
 app.post("/viewWebTelemetry", main_1.ViewWebTelemetry);
 //
 app.listen(process.env.PORT, () => {
