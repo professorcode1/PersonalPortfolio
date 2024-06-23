@@ -28,14 +28,24 @@ const ContactMe:React.FC<{
                         Here's all the ways we can get in touch!
                     </p>
                     <div className='flex justify-around w-full items-center'>
-                        <WebTelemetryAnchor href='mailto:raghkum2000@gmail.com'>
-                            <img src={GmailLogo} className='h-16 w-16' />
+                        <WebTelemetryAnchor href='mailto:raghkum2000@gmail.com' >
+                            <img src={GmailLogo} style={{
+                                height:"7.35rem",
+                                width:"7.35rem"
+                            }} />
                         </WebTelemetryAnchor>
                         <WebTelemetryAnchor href='https://www.linkedin.com/in/raghavkumar02/'>
-                            <img src={LinkedinLogo} className='h-12 w-12' />
+                            <img src={LinkedinLogo} style={{
+                                height:"3.1rem",
+                                width:"3.1rem"
+                            }}  />
                         </WebTelemetryAnchor>
                         <WebTelemetryAnchor href='https://www.instagram.com/blackcatsnchords/'>
-                            <img src={InstagramLogo} className='h-16 w-16'/>
+                            <img src={InstagramLogo} style={{
+                                height:"5rem",
+                                width:"5rem",
+                                marginLeft:"12px"
+                            }} />
                         </WebTelemetryAnchor>
                     </div>
                 </div>

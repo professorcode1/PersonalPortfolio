@@ -566,10 +566,6 @@ html{
   bottom: 0.5rem;
 }
 
-.bottom-4 {
-  bottom: 1rem;
-}
-
 .left-2 {
   left: 0.5rem;
 }
@@ -631,12 +627,16 @@ html{
   height: 4rem;
 }
 
-.h-4\/5 {
-  height: 80%;
+.h-20 {
+  height: 5rem;
 }
 
-.h-5\/6 {
-  height: 83.333333%;
+.h-3\/4 {
+  height: 75%;
+}
+
+.h-4\/5 {
+  height: 80%;
 }
 
 .h-8 {
@@ -647,6 +647,10 @@ html{
   height: 24rem;
 }
 
+.h-\[95\%\] {
+  height: 95%;
+}
+
 .h-full {
   height: 100%;
 }
@@ -655,16 +659,8 @@ html{
   height: 100vh;
 }
 
-.h-\[90\%\] {
-  height: 90%;
-}
-
-.h-\[95\%\] {
-  height: 95%;
-}
-
-.h-3\/4 {
-  height: 75%;
+.h-24 {
+  height: 6rem;
 }
 
 .w-12 {
@@ -679,6 +675,10 @@ html{
   width: 40%;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -691,16 +691,16 @@ html{
   width: 9rem;
 }
 
-.w-4\/5 {
-  width: 80%;
-}
-
-.w-5\/6 {
-  width: 83.333333%;
-}
-
 .w-96 {
   width: 24rem;
+}
+
+.w-\[45\%\] {
+  width: 45%;
+}
+
+.w-\[95\%\] {
+  width: 95%;
 }
 
 .w-full {
@@ -711,20 +711,8 @@ html{
   width: 100vw;
 }
 
-.w-\[90\%\] {
-  width: 90%;
-}
-
-.w-\[95\%\] {
-  width: 95%;
-}
-
-.w-\[45\%\] {
-  width: 45%;
-}
-
-.w-\[50\%\] {
-  width: 50%;
+.w-8 {
+  width: 2rem;
 }
 
 .cursor-pointer {
