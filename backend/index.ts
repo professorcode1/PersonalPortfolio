@@ -15,13 +15,13 @@ web_telemetry_connection.connect();
 
 
 
-const app = express()
-// var cors = require('cors');
-// app.use(cors({
-//     credentials: true,
-//     origin: "http://localhost:3000",
-//     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
-// }));
+const app = express();
+var cors = require('cors');
+app.use(cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+}));
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));

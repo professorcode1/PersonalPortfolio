@@ -62,8 +62,7 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
 }
 
 const AboutMe:React.FC<{
-    projectSelected:boolean
-}> = ({projectSelected}) => {
+}> = () => {
     const [startNotation, setStartNotation] = React.useState(false);
     const [mainParent] = useAutoAnimate<HTMLDivElement>({
         duration:300
@@ -75,7 +74,7 @@ const AboutMe:React.FC<{
             setMountChildren(true);
         }, 50);
     }, [])
-    if(projectSelected) return null;
+    // if(projectSelected) return null;
     return (
     <div className="h-screen flex  items-center justify-center overflow-x-hidden " id="AboutMeScreen">
         <div className='w-3/5 flex' ref={mainParent}>

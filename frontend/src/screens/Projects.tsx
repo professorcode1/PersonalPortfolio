@@ -96,10 +96,10 @@ const Projects:React.FC<{
     const HandleEscPress = (event:KeyboardEvent) => {
         if (event.key === "Escape") {
             setSelectedProject(null);    
-            setTimeout(()=>{
-                const element = document.getElementById("ProjectsScreen");
-                element?.scrollIntoView();
-            }, 10)
+            // setTimeout(()=>{
+            //     const element = document.getElementById("ProjectsScreen");
+            //     element?.scrollIntoView();
+            // }, 10)
         }
       
     }
