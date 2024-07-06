@@ -69,7 +69,7 @@ const ProjectDescription:Map<TProject, string> = new Map([
     ]
 ])
 
-
+const LIVE_PROJECTS:readonly TProject[] = ["College Scheduler", "Flight Simulator"] as const;
 
 const Projects:React.FC<{
     setSelectedProject:(arg:TProject|null)=>void
@@ -120,7 +120,7 @@ const Projects:React.FC<{
                                 {ProjectDescription.get(project_name)!}
                             </p>
                         </p>
-                        {project_name === "College Scheduler"  && 
+                        {LIVE_PROJECTS.includes(project_name)  && 
                             <p className='absolute bottom-2 left-2 text-green-600 font-semibold text-xl live-status'>Live</p>
                         } 
                         {selectedProject === project_name && ProjectContent && <ProjectContent key={project_name} />}

@@ -37,12 +37,20 @@ const FlightSimulatorDescription:React.FC<{}> = () => {
 
 const FlightSimulatorButton:React.FC<{}> = () => {
     return (
-    <WebTelemetryAnchor
-        className="m-2 p-2 rounded-lg border border-black w-24 text-center"
-        href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
-    >
-        Github
-    </WebTelemetryAnchor>
+        <>
+        <WebTelemetryAnchor
+            className="m-2 p-2 rounded-lg border border-black w-24 text-center"
+            href="https://github.com/professorcode1/Computer-Graphics-Project/tree/master"
+            >
+            Github
+        </WebTelemetryAnchor>
+        <WebTelemetryAnchor
+            className="m-2 p-2 rounded-lg border border-black w-36 text-center"
+            href='/flightsimulator'
+            >
+            Check it out!
+        </WebTelemetryAnchor>
+        </>
     )
 }
 

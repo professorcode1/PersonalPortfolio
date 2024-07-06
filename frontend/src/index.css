@@ -34,12 +34,13 @@
 }
 
 #living-shapes-wrapper > .shape:nth-child(2) {
-  background-color: rgb(245, 245, 245);
+  background-color: #C7DCA7;
+
   z-index: 2;
 }
 
 #living-shapes-wrapper > .shape:nth-child(3) {
-  background-color: rgb(155, 93, 229);
+  background-color: rgb(245, 245, 245);
   z-index: 1;
 }
 
@@ -59,7 +60,8 @@
 }
 
 #living-shapes-wrapper > .shape:nth-child(7) {
-  background-color: #C7DCA7;
+  background-color: rgb(155, 93, 229);
+
   z-index: 2;
 }
 
