@@ -13,12 +13,10 @@ const CollegeSchedulerDescription:React.FC<{}> = () => {
           course project that allows a university to input their scheduling constraints 
           and 
 
-<p className='whitespace-nowrap	'>
 
           <RoughNotation type='underline' show={true} > 
               &nbsp; generate a schedule &nbsp; 
             </RoughNotation>
-</p>
           
            
         </li>
@@ -26,11 +24,9 @@ const CollegeSchedulerDescription:React.FC<{}> = () => {
           The problem of scheduling translates to the NP hard problem of graph coloring 
           which I solved by implementing 2 meta heuristic algorithms: 
           
-          <p className='whitespace-nowrap	'>
             <RoughNotation type='underline' show={true} > 
               &nbsp; Ant Colony Optimization and Genetic Algorithm. 
             </RoughNotation> 
-          </p>
         </li>
     </ol>
   )

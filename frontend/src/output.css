@@ -586,11 +586,6 @@ html{
   margin: 1rem;
 }
 
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -615,20 +610,16 @@ html{
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
 .h-1\/2 {
   height: 50%;
-}
-
-.h-12 {
-  height: 3rem;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
-.h-20 {
-  height: 5rem;
 }
 
 .h-3\/4 {
@@ -659,24 +650,12 @@ html{
   height: 100vh;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
-.w-12 {
-  width: 3rem;
-}
-
 .w-16 {
   width: 4rem;
 }
 
 .w-2\/5 {
   width: 40%;
-}
-
-.w-20 {
-  width: 5rem;
 }
 
 .w-24 {
@@ -691,12 +670,12 @@ html{
   width: 9rem;
 }
 
-.w-96 {
-  width: 24rem;
+.w-4\/5 {
+  width: 80%;
 }
 
-.w-\[45\%\] {
-  width: 45%;
+.w-96 {
+  width: 24rem;
 }
 
 .w-\[95\%\] {
@@ -711,8 +690,8 @@ html{
   width: 100vw;
 }
 
-.w-8 {
-  width: 2rem;
+.grow {
+  flex-grow: 1;
 }
 
 .cursor-pointer {
@@ -721,6 +700,26 @@ html{
 
 .list-decimal {
   list-style-type: decimal;
+}
+
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.grid-flow-row-dense {
+  grid-auto-flow: row dense;
+}
+
+.grid-flow-col-dense {
+  grid-auto-flow: column dense;
+}
+
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -733,10 +732,6 @@ html{
 
 .items-start {
   align-items: flex-start;
-}
-
-.items-end {
-  align-items: flex-end;
 }
 
 .items-center {
@@ -759,6 +754,10 @@ html{
   justify-content: space-evenly;
 }
 
+.gap-8 {
+  gap: 2rem;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -767,16 +766,16 @@ html{
   overflow: scroll;
 }
 
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
 .overflow-x-hidden {
   overflow-x: hidden;
 }
 
 .overflow-y-scroll {
   overflow-y: scroll;
-}
-
-.whitespace-nowrap {
-  white-space: nowrap;
 }
 
 .rounded-lg {
@@ -828,8 +827,17 @@ html{
   padding: 1rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
 .pb-4 {
@@ -966,4 +974,62 @@ html{
 
 .visited\:text-purple-600:visited {
   color: rgb(147 51 234 );
+}
+
+@media (min-width: 768px) {
+  .md\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:justify-around {
+    justify-content: space-around;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:block {
+    display: block;
+  }
+
+  .lg\:w-3\/5 {
+    width: 60%;
+  }
+
+  .lg\:w-4\/5 {
+    width: 80%;
+  }
+
+  .lg\:w-\[45\%\] {
+    width: 45%;
+  }
+
+  .lg\:w-full {
+    width: 100%;
+  }
+
+  .lg\:flex-row {
+    flex-direction: row;
+  }
+
+  .lg\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .lg\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .lg\:pb-0 {
+    padding-bottom: 0px;
+  }
+
+  .lg\:pr-8 {
+    padding-right: 2rem;
+  }
+
+  .lg\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }

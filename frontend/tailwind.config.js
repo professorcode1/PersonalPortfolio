@@ -4,6 +4,14 @@ module.exports = {
   theme: {
     extend: {},
   },
+  variants: {
+    width: ['responsive'],
+    // or simply
+    extend: {
+      width: ['responsive'],
+    },
+  },
+
   plugins: [],
 }
 

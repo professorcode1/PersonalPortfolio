@@ -10,14 +10,14 @@ const NavBar:React.FC<{
     }
     return (
         <div className='w-full h-8 flex justify-center mt-4 text-slate-600 sticky top-0 bg-white z-50'>
-            <div className='w-3/5 flex justify-between MaratSansRegularFont text-lg'>
-                <div className='w-3/5'>
+            <div className='w-full lg:w-4/5 flex justify-between MaratSansRegularFont text-lg'>
+                <div className='hidden lg:block w-3/5'>
                     <p>
                         RAGHAV KUMAR
                     </p>
                 </div>
-                <div className='flex w-2/5 pl-4'>
-                    <button className='mx-4'
+                <div className='flex w-full justify-evenly lg:w-3/5 pl-4'>
+                    <button 
                         onClick={()=>{
                             const element = document.getElementById("AboutMeScreen");
                             element?.scrollIntoView({
@@ -27,7 +27,7 @@ const NavBar:React.FC<{
                     >
                         About
                     </button>
-                    <button className='mx-4'
+                    <button 
                         onClick={()=>{
                             const element = document.getElementById("ProjectsScreen");
                             element?.scrollIntoView({
@@ -37,7 +37,7 @@ const NavBar:React.FC<{
                     >
                         Projects
                     </button>
-                    <button className='mx-4'
+                    <button 
                         onClick={()=>{
                             const element = document.getElementById("ContactMeScreen");
                             element?.scrollIntoView({

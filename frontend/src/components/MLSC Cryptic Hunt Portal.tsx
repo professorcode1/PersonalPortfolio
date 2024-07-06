@@ -13,7 +13,7 @@ import { RoughNotation } from 'react-rough-notation';
 
 const MLSCHuntPortalImages:React.FC<{}> = () => {
   return (
-    <Splide className='border border-black w-[45%]' > 
+    <Splide className='border border-black w-full lg:w-[45%]' > 
     <SplideSlide>
       <img 
         src={MLSC_Landing_Page}

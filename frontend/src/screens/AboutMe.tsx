@@ -7,8 +7,8 @@ import { WebTelemetryAnchor } from '../components/WebTelAnchor';
 const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
     const buttonFormatting = ' rounded-md w-96 h-8 text-sm flex items-center justify-center cursor-pointer '
     return (
-        <div className='w-3/5 flex flex-col justify-center h-full pr-8' >
-                <p className='text-4xl MarartSansBoldFont'>
+        <div className='w-full lg:w-3/5 flex flex-col justify-center h-full lg:pr-8' >
+                <p className='text-2xl lg:text-4xl MarartSansBoldFont'>
                     Hello! I am Raghav Kumar, a &nbsp;	
                     <RoughNotation type="highlight" color='#FFC5C5' show={startNotation}>
                          developer 
@@ -31,30 +31,24 @@ const MyDescription:React.FC<{startNotation:boolean}> = ({startNotation}) => {
                         Thapar Institute of Engineering and Technology.
                     </RoughNotation>
                     &nbsp;
-                    After that I started working at MAQ Software as Software Developer and a Data Engineer. 
+                    I am currently working at MAQ Software as Software Developer/Data Engineer. 
                 </p>
                 <p className='text-sm mt-2'>
-                    At MAQ I am responsible for working on the internal tool that  
+                    At MAQ I am responsible for the 
+                    <span className='font-bold'>
+                    &nbsp;Power BI web automation tool
+                    </span>&nbsp; and &nbsp;
+                    <span className='font-bold'>
+                        data engineering solutions for the Microsoft learn platform. 
+                    </span>
+                    
                 </p>
-                <p className='text-sm'>
-                    <RoughNotation type='highlight' color='#FFC5C5' show={startNotation}>
-                        automates Power BI workloads
-                    </RoughNotation>
-                    &nbsp; as well as work on data engineering solutions to improve the  &nbsp;                    
-                    <RoughNotation type='underline' show={startNotation}>
-                        <WebTelemetryAnchor href='https://learn.microsoft.com/en-us/' className='whitespace-nowrap	'>
-                            Microsoft learn platform 
-                        </WebTelemetryAnchor>
-                    </RoughNotation>
-                    &nbsp;
-                     among many other things. 
-                </p>
-                <div className='w-3/5 flex flex-row justify-center h-full pr-8 mt-4'>
+                <div className='w-full lg:w-3/5 flex flex-row justify-center h-full pr-8 mt-4'>
                     <WebTelemetryAnchor href='https://www.linkedin.com/in/raghavkumar02/' className={'bg-black text-white ' + buttonFormatting}>
-                        View LinkedIn
+                        LinkedIn
                     </WebTelemetryAnchor>
                     <WebTelemetryAnchor href='https://github.com/professorcode1' className={'ml-2 border-slate-500 border ' + buttonFormatting}>
-                        View Github
+                        Github
                     </WebTelemetryAnchor>
                 </div>
         </div>
@@ -77,9 +71,9 @@ const AboutMe:React.FC<{
     // if(projectSelected) return null;
     return (
     <div className="h-screen flex  items-center justify-center overflow-x-hidden " id="AboutMeScreen">
-        <div className='w-3/5 flex' ref={mainParent}>
+        <div className='w-4/5 flex' ref={mainParent}>
         {mountChildren && <MyDescription startNotation={startNotation} />}
-            {mountChildren && <div className='w-2/5 h-full p-4 pt-0  '>
+            {mountChildren && <div className='w-2/5 h-full p-4 pt-0 hidden lg:block '>
                 <img src={MyImage} onLoad={()=>setStartNotation(true)} className='rounded-lg shadow-2xl h-96' style={{
                     objectFit:"cover"
                 }} />
