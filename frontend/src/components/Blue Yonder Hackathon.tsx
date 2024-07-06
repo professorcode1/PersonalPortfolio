@@ -41,7 +41,7 @@ const BlueYonderDemandButton:React.FC<{}> = () => {
 
 const BlueYonderHackathon:React.FC<{}> = () => {
     return <ProjectBaseTemplate
-        name='Blue Yonder Demand and Supply Hackathon'
+        name='Blue Yonder Hack'
         asset={null}
         description={<BlueYonderDemandDescription />}
         buttons={<BlueYonderDemandButton />}
