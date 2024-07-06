@@ -14,7 +14,7 @@ const ProjectBaseTemplate:React.FC<{
 }) =>{
     return (
         <div className='h-screen flex items-center justify-center font-mono'>
-            <div className='w-[95%] h-[95%] bg-white relative flex flex-col items-start justify-around overflow-y-scroll'>
+            <div className='w-[95%] h-[95%] bg-white relative flex flex-col items-start justify-around overflow-y-scroll '>
                     <p className='mt-2 ml-2 text-3xl font-bold pl-6 pb-16 lg:pb-0'>{name}</p>
 
                     <div className='w-full  h-3/4 flex flex-col lg:flex-row items-center justify-center mt-4 p-2 '>
@@ -32,7 +32,7 @@ const ProjectBaseTemplate:React.FC<{
                         }
                         {typeof asset === "object" && asset}
 
-                        <div className={"w-full "+(asset ===null ?'lg:w-full': 'lg:w-[45%]')}>
+                        <div className={"w-full pb-16 md:pb-0 "+(asset ===null ?'lg:w-full': 'lg:w-[45%]')}>
                             {description}
                             <div className="w-full flex justify-center text-base ">
                                 {buttons}
