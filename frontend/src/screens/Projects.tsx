@@ -16,7 +16,7 @@ const ProjectNames = [
     "College Scheduler",
     "MLSC Cryptic Hunt Portal",
     "Intel OneAPI Code Maven Hackathon",
-    "Blue Yonder Demand and Supply Hackathon",
+    "Blue Yonder Hack",
 ] as const 
 
 type TProject = typeof ProjectNames[number]
@@ -38,8 +38,8 @@ const ProjectComponent:Map<TProject, React.FC> = new Map([
         "Intel OneAPI Code Maven Hackathon", 
         WebTelemetryMountingEventHOC(IntelHackathon, "Intel OneAPI Code Maven Hackathon")],
     [
-        "Blue Yonder Demand and Supply Hackathon", 
-        WebTelemetryMountingEventHOC(BlueYonderHackathon, "Blue Yonder Demand and Supply Hackathon")],
+        "Blue Yonder Hack", 
+        WebTelemetryMountingEventHOC(BlueYonderHackathon, "Blue Yonder Hack")],
     [
         "PowerBot: MAQ", 
         WebTelemetryMountingEventHOC(PowerBot, "PowerBot: MAQ")]]
@@ -64,8 +64,8 @@ const ProjectDescription:Map<TProject, string> = new Map([
         "Intel OneAPI Code Maven Hackathon", 
         "An Intel OneAPI solution to predict stocks."
     ],[
-        "Blue Yonder Demand and Supply Hackathon", 
-        "A Monte Carlo Tree Search implementation to optimise the logistics problem of optimal trucking."
+        "Blue Yonder Hack", 
+        "A Monte Carlo Tree Search implementation to solve the logistics problem of optimal trucking."
     ]
 ])
 
