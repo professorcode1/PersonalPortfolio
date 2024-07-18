@@ -1,12 +1,6 @@
 import React from 'react';
-import { EventAnalysis } from '../components/EventAnalysis';
-import { FlightSimulator } from '../components/Flight Simulator';
-import { CollegeScheduler } from '../components/College Scheduler';
-import { MLSCHuntPortal } from '../components/MLSC Cryptic Hunt Portal';
-import { IntelHackathon } from '../components/Intel Hackathon';
-import { BlueYonderHackathon } from '../components/Blue Yonder Hackathon';
-import { PowerBot } from '../components/PowerBot';
-import GmailLogo from "../assets/gmail.webp"
+
+import GmailLogo from "../assets/gmail.png"
 import LinkedinLogo from "../assets/LinkedIn_icon.png"
 import InstagramLogo from "../assets/instagram logo.png"
 import { WebTelemetryAnchor } from '../components/WebTelAnchor';
@@ -30,20 +24,17 @@ const ContactMe:React.FC<{
                     <div className='flex justify-between  md:justify-around w-full items-center'>
                         <WebTelemetryAnchor href='mailto:raghkum2000@gmail.com' >
                             <img src={GmailLogo} style={{
-                                height:"5rem",
-                                width:"5rem"
+                                height:"4rem"
                             }} />
                         </WebTelemetryAnchor>
                         <WebTelemetryAnchor href='https://www.linkedin.com/in/raghavkumar02/'>
                             <img src={LinkedinLogo} style={{
-                                height:"3.1rem",
-                                width:"3.1rem"
+                                height:"4rem"
                             }}  />
                         </WebTelemetryAnchor>
                         <WebTelemetryAnchor href='https://www.instagram.com/blackcatsnchords/'>
                             <img src={InstagramLogo} style={{
-                                height:"5rem",
-                                width:"5rem",
+                                height:"4rem",
                             }} />
                         </WebTelemetryAnchor>
                     </div>

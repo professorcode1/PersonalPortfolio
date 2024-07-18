@@ -13,6 +13,7 @@ const WebTelemetryAnchor:React.FC<{
         className
     }
 ) => {
+
     const OnLinkClick:MouseEventHandler<HTMLAnchorElement> = (event:MouseEvent) => {
         event.preventDefault()
         const potentialToken = GetSessionToken();

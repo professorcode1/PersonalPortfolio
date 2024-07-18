@@ -1,29 +1,40 @@
 {
   "files": {
-    "main.css": "/static/css/main.919fcc61.css",
-    "main.js": "/static/js/main.e6297697.js",
+    "main.css": "/static/css/main.36cf9c36.css",
+    "main.js": "/static/js/main.f42044a2.js",
     "static/js/453.8ab44547.chunk.js": "/static/js/453.8ab44547.chunk.js",
     "static/media/flight simulator.webp": "/static/media/flight simulator.fa2d0b6de84c84050b4a.webp",
     "static/media/collegetimetableschedulerflow.webp": "/static/media/collegetimetableschedulerflow.02e6c0047bb1088f1f76.webp",
     "static/media/Intel Hack Plot.png": "/static/media/Intel Hack Plot.83b8393931dc4bfdb66e.png",
     "static/media/MLSC Register Page.png": "/static/media/MLSC Register Page.34c04c4a9b4f06a7b390.png",
+    "static/media/spark logo.png": "/static/media/spark logo.3f90eadb8e164523e987.png",
+    "static/media/mongodb logo.png": "/static/media/mongodb logo.740a61c6f1d7dfd30f9c.png",
     "static/media/MLSC Leaderboard Page.png": "/static/media/MLSC Leaderboard Page.ff51a07c62a501416b41.png",
     "static/media/MLSC Question Page.png": "/static/media/MLSC Question Page.6e5af7236b9afa9636bc.png",
     "static/media/Me with Cat low rez.jpg": "/static/media/Me with Cat low rez.d1a5e7f11cc6aff9d114.jpg",
     "static/media/Marat Sans Bold.otf": "/static/media/Marat Sans Bold.f0c1601eb1d29daa51db.otf",
     "static/media/Marat Sans Regular.otf": "/static/media/Marat Sans Regular.5a961b695b18381fe68e.otf",
     "static/media/MLSC Landing Page.png": "/static/media/MLSC Landing Page.15087aa6087264056aff.png",
+    "static/media/opengl icon.jpg": "/static/media/opengl icon.9403bce80d8f92755633.jpg",
+    "static/media/instagram logo.png": "/static/media/instagram logo.ccd498c0e8de6ed11721.png",
+    "static/media/gmail.png": "/static/media/gmail.88047281903ee9552e0f.png",
+    "static/media/python logo.jpg": "/static/media/python logo.3ba3077878cd69ba2c0e.jpg",
     "static/media/RammettoOne-Regular.ttf": "/static/media/RammettoOne-Regular.f7c15da7bdd97cf2be0c.ttf",
-    "static/media/instagram logo.png": "/static/media/instagram logo.53505072d690c460b44c.png",
+    "static/media/logo-oneapi-rwd.jpg": "/static/media/logo-oneapi-rwd.db49c700599f9589e7a2.jpg",
     "static/media/LinkedIn_icon.png": "/static/media/LinkedIn_icon.c8108f6744cce228abf5.png",
-    "static/media/gmail.webp": "/static/media/gmail.3c41ea7d0963bcf1bb5d.webp",
+    "static/media/Nvidia_CUDA_Logo.jpg": "/static/media/Nvidia_CUDA_Logo.cc824a87a2cdac950637.jpg",
+    "static/media/react.svg": "/static/media/react.bbc844f2606a41903bbde6f1719d2164.svg",
+    "static/media/nodejs.svg": "/static/media/nodejs.02a9a09e54755fd8124011b83c2a5d02.svg",
+    "static/media/c++.svg": "/static/media/c++.beaeed7fabebfeb2769c7b169beefff7.svg",
+    "static/media/mysql.svg": "/static/media/mysql.b47370542353d2aed5e4a10542f878cb.svg",
+    "static/media/expressjs.svg": "/static/media/expressjs.632d3c32e6c8f71f7f7faf4fb71b945b.svg",
     "index.html": "/index.html",
-    "main.919fcc61.css.map": "/static/css/main.919fcc61.css.map",
-    "main.e6297697.js.map": "/static/js/main.e6297697.js.map",
+    "main.36cf9c36.css.map": "/static/css/main.36cf9c36.css.map",
+    "main.f42044a2.js.map": "/static/js/main.f42044a2.js.map",
     "453.8ab44547.chunk.js.map": "/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.919fcc61.css",
-    "static/js/main.e6297697.js"
+    "static/css/main.36cf9c36.css",
+    "static/js/main.f42044a2.js"
   ]
 }

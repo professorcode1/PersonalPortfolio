@@ -14,10 +14,10 @@ const ProjectBaseTemplate:React.FC<{
 }) =>{
     return (
         <div className='h-screen flex items-center justify-center font-mono'>
-            <div className='w-[95%] h-[95%] bg-white relative flex flex-col items-start justify-around overflow-y-scroll '>
-                    <p className='mt-2 ml-2 text-3xl font-bold pl-6 pb-16 lg:pb-0'>{name}</p>
+            <div className='w-[95%] h-[95%] bg-white relative flex flex-col items-start justify-start pt-8  '>
+                    <p className='mt-2 ml-2 text-3xl font-bold pl-6 pb-2 lg:pb-0'>{name}</p>
 
-                    <div className='w-full  h-3/4 flex flex-col lg:flex-row items-center justify-center mt-4 p-2 '>
+                    <div className='w-full  flex flex-col lg:flex-row items-center justify-center p-2 overflow-y-auto relative'>
 
 
                         {typeof asset === "string" && <WebTelemetryAnchor 
@@ -32,7 +32,7 @@ const ProjectBaseTemplate:React.FC<{
                         }
                         {typeof asset === "object" && asset}
 
-                        <div className={"w-full pb-16 md:pb-0 "+(asset ===null ?'lg:w-full': 'lg:w-[45%]')}>
+                        <div className={"w-full pb-16 md:pb-0 h-full lg:flex lg:flex-col lg:justify-center "+(asset ===null ?'lg:w-full': 'lg:w-[45%]')}>
                             {description}
                             <div className="w-full flex justify-center text-base ">
                                 {buttons}

@@ -7,7 +7,47 @@ import { IntelHackathon } from '../components/Intel Hackathon';
 import { BlueYonderHackathon } from '../components/Blue Yonder Hackathon';
 import { PowerBot } from '../components/PowerBot';
 import { WebTelemetryMountingEventHOC } from '../utils/WebTelemetryComponentWrapper';
-
+import ApacheSparkLogo from "../assets/spark logo.png"
+import MySqlLogo from "../assets/mysql.svg"
+import PythonLogo from "../assets/python logo.jpg"
+import SelemiumLogo from "../assets/Selenium_Logo.jpg"
+import CppLogo from "../assets/c++.svg"
+import ExpressLogo from "../assets/expressjs.svg"
+import OneApiLogo from "../assets/logo-oneapi-rwd.jpg"
+import MongoDbLogo from "../assets/mongodb logo.png"
+import NodeLogo from "../assets/nodejs.svg"
+import CudaLogo from "../assets/Nvidia_CUDA_Logo.jpg"
+import OpenGLLogo from "../assets/opengl icon.jpg"
+import ReactLogo from "../assets/react.svg"
+const TechnologiesUsedName = [
+    "Apache Spark Logo",
+    "MySql Logo",
+    "Python Logo",
+    "Selenium Logo",
+    "C++ Logo",
+    "Express Logo",
+    "OneAPI Logo",
+    "MongoDB Logo",
+    "Node Logo",
+    "Cuda Logo",
+    "OpenGL Logo",
+    "React Logo"
+] as const;
+type ETechnologyUsed = typeof TechnologiesUsedName[number];
+const TechnologyUsedAssets:Map<ETechnologyUsed, React.ReactNode> = new Map([
+    ["Apache Spark Logo" ,<img className='ml-2 w-12 pb-2' src={ApacheSparkLogo} />],
+    ["MySql Logo", <img className='ml-2 w-4' src={MySqlLogo} />],
+    ["Python Logo", <img className='ml-2 w-8' src={PythonLogo} />],
+    ["Selenium Logo", <img className='ml-2 w-8' src={SelemiumLogo} />],
+    ["C++ Logo" , <img className='ml-2 w-6' src={CppLogo} />],
+    ["Express Logo", <img className='ml-2 w-6 ' src={ExpressLogo} />],
+    ["OneAPI Logo", <img className='ml-2 w-16' src={OneApiLogo} />],
+    ["MongoDB Logo", <img className='ml-2 w-16 ' src={MongoDbLogo} />],
+    ["Node Logo", <img className='ml-2 w-4' src={NodeLogo} />],
+    ["Cuda Logo", <img className='ml-2 w-12 ' src={CudaLogo} />],
+    ["OpenGL Logo", <img className='ml-2 w-14' src={OpenGLLogo} />],
+    ["React Logo", <img className='ml-2 w-6' src={ReactLogo} />],
+]);
 
 const ProjectNames = [
     "PowerBot: MAQ",
@@ -20,6 +60,16 @@ const ProjectNames = [
 ] as const 
 
 type TProject = typeof ProjectNames[number]
+
+const ProtectToTechStack:Map<TProject, ETechnologyUsed[]> = new Map([
+    ["PowerBot: MAQ", ["Selenium Logo", "Python Logo", "Apache Spark Logo"]] as [TProject, ETechnologyUsed[]],
+    ["Flight Simulator", ["OpenGL Logo", "C++ Logo"]] as [TProject, ETechnologyUsed[]],
+    ["MLSC Cryptic Hunt Portal", ["Node Logo","Express Logo", "MongoDB Logo"]] as [TProject, ETechnologyUsed[]],
+    ["Blue Yonder Hack", ["Python Logo"]] as [TProject, ETechnologyUsed[]],
+    ["Event Analysis", ["Cuda Logo"]] as [TProject, ETechnologyUsed[]],
+    ["College Scheduler", ["React Logo", "MySql Logo", "Node Logo", "Express Logo"]] as [TProject, ETechnologyUsed[]],
+    ["Intel OneAPI Code Maven Hackathon", ["OneAPI Logo", "C++ Logo"]] as [TProject, ETechnologyUsed[]],
+])
 
 const ProjectComponent:Map<TProject, React.FC> = new Map([
     [
@@ -116,9 +166,13 @@ const Projects:React.FC<{
                             <p className='text-xl pb-1'>
                                 {project_name}
                             </p>
-                            <p className='text-xs font-normal	'>
+                            <p className='text-xs font-normal'>
                                 {ProjectDescription.get(project_name)!}
                             </p>
+                            <div className='flex mt-2 absolute bottom-2 right-2' > 
+                                {ProtectToTechStack.get(project_name)!.map(x => TechnologyUsedAssets.get(x)!)}
+                            </div>
+
                         </p>
                         {LIVE_PROJECTS.includes(project_name)  && 
                             <p className='absolute bottom-2 left-2 text-green-600 font-semibold text-xl live-status'>Live</p>
